@@ -12,6 +12,20 @@
 		08787A972134DC3100569477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08787A952134DC3100569477 /* Main.storyboard */; };
 		08787A992134DC3200569477 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08787A982134DC3200569477 /* Assets.xcassets */; };
 		08787A9C2134DC3200569477 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08787A9A2134DC3200569477 /* LaunchScreen.storyboard */; };
+		08787AAA2134F13500569477 /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787AA42134F13500569477 /* BindableType.swift */; };
+		08787AAB2134F13500569477 /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787AA52134F13500569477 /* ErrorTracker.swift */; };
+		08787AAC2134F13500569477 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787AA62134F13500569477 /* ActivityIndicator.swift */; };
+		08787AAD2134F13500569477 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787AA72134F13500569477 /* UIViewController+.swift */; };
+		08787AAE2134F13500569477 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787AA82134F13500569477 /* UIViewController+Rx.swift */; };
+		08787AAF2134F13500569477 /* Observable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787AA92134F13500569477 /* Observable+.swift */; };
+		08787ABB2134F24000569477 /* RefreshAutoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787AB22134F24000569477 /* RefreshAutoHeader.swift */; };
+		08787ABC2134F24000569477 /* ViewModelType+Loadmore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787AB32134F24000569477 /* ViewModelType+Loadmore.swift */; };
+		08787ABD2134F24000569477 /* LoadMoreTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787AB42134F24000569477 /* LoadMoreTableView.swift */; };
+		08787ABE2134F24000569477 /* RefreshTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787AB52134F24000569477 /* RefreshTableView.swift */; };
+		08787ABF2134F24000569477 /* RefreshAutoFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787AB62134F24000569477 /* RefreshAutoFooter.swift */; };
+		08787AC02134F24000569477 /* PagingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787AB82134F24000569477 /* PagingInfo.swift */; };
+		08787AC12134F24000569477 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787AB92134F24000569477 /* ViewModelType.swift */; };
+		08787AC22134F24000569477 /* HasID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787ABA2134F24000569477 /* HasID.swift */; };
 		CAD519AA52EBCA719AF780D4 /* Pods_MyEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B314E99F19649130D233435 /* Pods_MyEditor.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +37,20 @@
 		08787A982134DC3200569477 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08787A9B2134DC3200569477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08787A9D2134DC3200569477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08787AA42134F13500569477 /* BindableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
+		08787AA52134F13500569477 /* ErrorTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
+		08787AA62134F13500569477 /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		08787AA72134F13500569477 /* UIViewController+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		08787AA82134F13500569477 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
+		08787AA92134F13500569477 /* Observable+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+.swift"; sourceTree = "<group>"; };
+		08787AB22134F24000569477 /* RefreshAutoHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshAutoHeader.swift; sourceTree = "<group>"; };
+		08787AB32134F24000569477 /* ViewModelType+Loadmore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewModelType+Loadmore.swift"; sourceTree = "<group>"; };
+		08787AB42134F24000569477 /* LoadMoreTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreTableView.swift; sourceTree = "<group>"; };
+		08787AB52134F24000569477 /* RefreshTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshTableView.swift; sourceTree = "<group>"; };
+		08787AB62134F24000569477 /* RefreshAutoFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshAutoFooter.swift; sourceTree = "<group>"; };
+		08787AB82134F24000569477 /* PagingInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingInfo.swift; sourceTree = "<group>"; };
+		08787AB92134F24000569477 /* ViewModelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		08787ABA2134F24000569477 /* HasID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasID.swift; sourceTree = "<group>"; };
 		77172BC32C620FEE220EE457 /* Pods-MyEditor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyEditor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyEditor/Pods-MyEditor.debug.xcconfig"; sourceTree = "<group>"; };
 		7B314E99F19649130D233435 /* Pods_MyEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E625F21083A8C8D24E625011 /* Pods-MyEditor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyEditor.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyEditor/Pods-MyEditor.release.xcconfig"; sourceTree = "<group>"; };
@@ -61,6 +89,8 @@
 		08787A902134DC3100569477 /* MyEditor */ = {
 			isa = PBXGroup;
 			children = (
+				08787AA32134F13500569477 /* Extension */,
+				08787AB02134F24000569477 /* Architecture */,
 				08787A912134DC3100569477 /* AppDelegate.swift */,
 				08787A932134DC3100569477 /* ViewController.swift */,
 				08787A952134DC3100569477 /* Main.storyboard */,
@@ -69,6 +99,50 @@
 				08787A9D2134DC3200569477 /* Info.plist */,
 			);
 			path = MyEditor;
+			sourceTree = "<group>";
+		};
+		08787AA32134F13500569477 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				08787AA42134F13500569477 /* BindableType.swift */,
+				08787AA52134F13500569477 /* ErrorTracker.swift */,
+				08787AA62134F13500569477 /* ActivityIndicator.swift */,
+				08787AA72134F13500569477 /* UIViewController+.swift */,
+				08787AA82134F13500569477 /* UIViewController+Rx.swift */,
+				08787AA92134F13500569477 /* Observable+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		08787AB02134F24000569477 /* Architecture */ = {
+			isa = PBXGroup;
+			children = (
+				08787AB12134F24000569477 /* LoadMore */,
+				08787AB72134F24000569477 /* Model */,
+			);
+			path = Architecture;
+			sourceTree = "<group>";
+		};
+		08787AB12134F24000569477 /* LoadMore */ = {
+			isa = PBXGroup;
+			children = (
+				08787AB22134F24000569477 /* RefreshAutoHeader.swift */,
+				08787AB32134F24000569477 /* ViewModelType+Loadmore.swift */,
+				08787AB42134F24000569477 /* LoadMoreTableView.swift */,
+				08787AB52134F24000569477 /* RefreshTableView.swift */,
+				08787AB62134F24000569477 /* RefreshAutoFooter.swift */,
+			);
+			path = LoadMore;
+			sourceTree = "<group>";
+		};
+		08787AB72134F24000569477 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				08787AB82134F24000569477 /* PagingInfo.swift */,
+				08787AB92134F24000569477 /* ViewModelType.swift */,
+				08787ABA2134F24000569477 /* HasID.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		095BA90798104CE93D2C45D5 /* Frameworks */ = {
@@ -220,8 +294,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08787ABF2134F24000569477 /* RefreshAutoFooter.swift in Sources */,
 				08787A942134DC3100569477 /* ViewController.swift in Sources */,
+				08787AAC2134F13500569477 /* ActivityIndicator.swift in Sources */,
+				08787AAD2134F13500569477 /* UIViewController+.swift in Sources */,
+				08787ABB2134F24000569477 /* RefreshAutoHeader.swift in Sources */,
+				08787AAA2134F13500569477 /* BindableType.swift in Sources */,
+				08787AAF2134F13500569477 /* Observable+.swift in Sources */,
+				08787AC02134F24000569477 /* PagingInfo.swift in Sources */,
+				08787AC12134F24000569477 /* ViewModelType.swift in Sources */,
 				08787A922134DC3100569477 /* AppDelegate.swift in Sources */,
+				08787ABC2134F24000569477 /* ViewModelType+Loadmore.swift in Sources */,
+				08787AAB2134F13500569477 /* ErrorTracker.swift in Sources */,
+				08787AAE2134F13500569477 /* UIViewController+Rx.swift in Sources */,
+				08787ABD2134F24000569477 /* LoadMoreTableView.swift in Sources */,
+				08787ABE2134F24000569477 /* RefreshTableView.swift in Sources */,
+				08787AC22134F24000569477 /* HasID.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,7 +457,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VG5JZ5RSZ7;
 				INFOPLIST_FILE = MyEditor/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MyEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -385,7 +476,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VG5JZ5RSZ7;
 				INFOPLIST_FILE = MyEditor/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MyEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
