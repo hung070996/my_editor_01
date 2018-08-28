@@ -28,6 +28,7 @@
 		08787AC22134F24000569477 /* HasID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787ABA2134F24000569477 /* HasID.swift */; };
 		1B27E6652134FEBF0014AC4A /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B27E6642134FEBF0014AC4A /* Intro.storyboard */; };
 		1B27E667213500560014AC4A /* IntroNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27E666213500560014AC4A /* IntroNavigator.swift */; };
+		1B27E66C213530920014AC4A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27E66B213530920014AC4A /* Utils.swift */; };
 		CAD519AA52EBCA719AF780D4 /* Pods_MyEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B314E99F19649130D233435 /* Pods_MyEditor.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		08787ABA2134F24000569477 /* HasID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasID.swift; sourceTree = "<group>"; };
 		1B27E6642134FEBF0014AC4A /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
 		1B27E666213500560014AC4A /* IntroNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroNavigator.swift; sourceTree = "<group>"; };
+		1B27E66B213530920014AC4A /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		77172BC32C620FEE220EE457 /* Pods-MyEditor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyEditor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyEditor/Pods-MyEditor.debug.xcconfig"; sourceTree = "<group>"; };
 		7B314E99F19649130D233435 /* Pods_MyEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E625F21083A8C8D24E625011 /* Pods-MyEditor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyEditor.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyEditor/Pods-MyEditor.release.xcconfig"; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 		08787A902134DC3100569477 /* MyEditor */ = {
 			isa = PBXGroup;
 			children = (
+				1B27E66A213530850014AC4A /* Support */,
 				1B27E6622134FDE70014AC4A /* Scene */,
 				08787AA32134F13500569477 /* Extension */,
 				08787AB02134F24000569477 /* Architecture */,
@@ -182,6 +185,14 @@
 				1B27E6642134FEBF0014AC4A /* Intro.storyboard */,
 			);
 			path = IntroView;
+			sourceTree = "<group>";
+		};
+		1B27E66A213530850014AC4A /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				1B27E66B213530920014AC4A /* Utils.swift */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,6 +343,7 @@
 				08787AC12134F24000569477 /* ViewModelType.swift in Sources */,
 				08787A922134DC3100569477 /* AppDelegate.swift in Sources */,
 				08787ABC2134F24000569477 /* ViewModelType+Loadmore.swift in Sources */,
+				1B27E66C213530920014AC4A /* Utils.swift in Sources */,
 				08787AAB2134F13500569477 /* ErrorTracker.swift in Sources */,
 				08787AAE2134F13500569477 /* UIViewController+Rx.swift in Sources */,
 				08787ABD2134F24000569477 /* LoadMoreTableView.swift in Sources */,
@@ -483,13 +495,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VG5JZ5RSZ7;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MyEditor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.MyEditor;
+				PRODUCT_BUNDLE_IDENTIFIER = shin.MyEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -502,13 +515,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VG5JZ5RSZ7;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MyEditor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.MyEditor;
+				PRODUCT_BUNDLE_IDENTIFIER = shin.MyEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
