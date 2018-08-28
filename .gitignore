@@ -44,7 +44,7 @@ playground.xcworkspace
 .DS_Store
 Pods/
 #API Key
-APIKey.swift
+Private/
 
 # CocoaPods
 #
