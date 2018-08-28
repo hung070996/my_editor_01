@@ -17,4 +17,6 @@ pod 'Reusable'
 pod 'MJRefresh'
 pod 'Then'
 pod 'OrderedSet'
+pod 'paper-onboarding'
+pod 'SnapKit'
 end

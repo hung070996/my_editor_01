@@ -8,10 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class IntroViewController: UIViewController {
 
+    @IBOutlet weak var introOnboarding: PaperOnboarding!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
 }
-
