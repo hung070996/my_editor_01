@@ -1,0 +1,83 @@
+//
+//  HomeViewModel.swift
+//  MyEditor
+//
+//  Created by Can Khac Nguyen on 8/29/18.
+//  Copyright © 2018 Do Hung. All rights reserved.
+//
+
+import RxSwift
+import RxCocoa
+
+struct HomeViewModel: ViewModelType {
+    struct Input {
+        let loadTableViewTrigger: Driver<Void>
+        let reloadTableViewTrigger: Driver<Void>
+        let loadMoreTableViewTrigger: Driver<Void>
+        let loadCollectionViewTrigger: Driver<Void>
+        let reloadCollectionViewTrigger: Driver<Void>
+        let loadMoreCollectionViewTrigger: Driver<Void>
+        let selectTableViewTrigger: Driver<IndexPath>
+        let selectCollectionViewTrigger: Driver<IndexPath>
+    }
+    
+    struct Output {
+        let errorTableView: Driver<Error>
+        let errorCollectionView: Driver<Error>
+        let loadingTableView: Driver<Bool>
+        let loadingCollectionView: Driver<Bool>
+        let refreshing: Driver<Bool>
+        let refreshingCollectionView: Driver<Bool>
+        let loadingMoreTableView: Driver<Bool>
+        let loadingMoreCollectionView: Driver<Bool>
+        let fetchItemsTableView: Driver<Void>
+        let fetchItemsCollectionView: Driver<Void>
+        let photos: Driver<[Photo]>
+        let collections: Driver<[Collection]>
+        let isEmptyPhotoData: Driver<Bool>
+        let isEmptyCollectionData: Driver<Bool>
+    }
+    
+    let useCase: HomeUseCase
+    
+    func transform(_ input: Input) -> Output {
+        let loadMoreOutputTableView = setupLoadMorePaging(loadTrigger: input.loadTableViewTrigger,
+                                                          getItems: useCase.getPhotos,
+                                                          refreshTrigger: input.reloadTableViewTrigger,
+                                                          refreshItems: useCase.getPhotos,
+                                                          loadMoreTrigger: input.loadMoreTableViewTrigger,
+                                                          loadMoreItems: useCase.getPhotos)
+        let loadMoreOutputCollectionView = setupLoadMorePaging(loadTrigger: input.loadCollectionViewTrigger,
+                                                          getItems: useCase.getCollections,
+                                                          refreshTrigger: input.reloadCollectionViewTrigger,
+                                                          refreshItems: useCase.getCollections,
+                                                          loadMoreTrigger: input.loadMoreCollectionViewTrigger,
+                                                          loadMoreItems: useCase.getCollections)
+        let (pageTable, fetchItemsTable, loadErrorTable, loadingTable, refreshingTable, loadingMoreTable) = loadMoreOutputTableView
+        let (pageCollection, fetchItemsCollection, loadErrorCollection, loadingCollection, refreshingCollection, loadingMoreCollection) = loadMoreOutputCollectionView
+        let photos = pageTable.map { $0.items }.asDriverOnErrorJustComplete()
+        let collections = pageCollection.map { $0.items }.asDriverOnErrorJustComplete()
+        let isEmptyPhotos = Driver.combineLatest(photos, loadingTable)
+            .filter { !$0.1 }
+            .map { $0.0.isEmpty }
+        let isEmptyCollections = Driver.combineLatest(collections, loadingCollection)
+            .filter { !$0.1 }
+            .map { $0.0.isEmpty }
+        return Output(
+            errorTableView: loadErrorTable,
+            errorCollectionView: loadErrorCollection,
+            loadingTableView: loadingTable,
+            loadingCollectionView: loadingCollection,
+            refreshing: refreshingTable,
+            refreshingCollectionView: refreshingCollection,
+            loadingMoreTableView: loadingMoreTable,
+            loadingMoreCollectionView: loadingMoreCollection,
+            fetchItemsTableView: fetchItemsTable,
+            fetchItemsCollectionView: fetchItemsCollection,
+            photos: photos,
+            collections: collections,
+            isEmptyPhotoData: isEmptyPhotos,
+            isEmptyCollectionData: isEmptyCollections
+        )
+    }
+}
