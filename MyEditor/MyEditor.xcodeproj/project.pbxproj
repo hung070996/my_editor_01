@@ -25,6 +25,9 @@
 		08787AC02134F24000569477 /* PagingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787AB82134F24000569477 /* PagingInfo.swift */; };
 		08787AC12134F24000569477 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787AB92134F24000569477 /* ViewModelType.swift */; };
 		08787AC22134F24000569477 /* HasID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787ABA2134F24000569477 /* HasID.swift */; };
+		1B27E6652134FEBF0014AC4A /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B27E6642134FEBF0014AC4A /* Intro.storyboard */; };
+		1B27E667213500560014AC4A /* IntroNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27E666213500560014AC4A /* IntroNavigator.swift */; };
+		1B27E66C213530920014AC4A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27E66B213530920014AC4A /* Utils.swift */; }
 		08787AC5213527A800569477 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787AC4213527A800569477 /* Collection.swift */; };
 		08787AC72135286200569477 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787AC62135286200569477 /* Photo.swift */; };
 		08787AC9213528FF00569477 /* URLPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787AC8213528FF00569477 /* URLPhoto.swift */; };
@@ -60,7 +63,10 @@
 		08787AB62134F24000569477 /* RefreshAutoFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshAutoFooter.swift; sourceTree = "<group>"; };
 		08787AB82134F24000569477 /* PagingInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingInfo.swift; sourceTree = "<group>"; };
 		08787AB92134F24000569477 /* ViewModelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
-		08787ABA2134F24000569477 /* HasID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasID.swift; sourceTree = "<group>"; };
+		08787ABA2134F24000569477 /* HasID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasID.swift; sourceTree = "<group>"; }; 
+		1B27E6642134FEBF0014AC4A /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
+		1B27E666213500560014AC4A /* IntroNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroNavigator.swift; sourceTree = "<group>"; };
+		1B27E66B213530920014AC4A /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		08787AC4213527A800569477 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		08787AC62135286200569477 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		08787AC8213528FF00569477 /* URLPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLPhoto.swift; sourceTree = "<group>"; };
@@ -111,6 +117,8 @@
 		08787A902134DC3100569477 /* MyEditor */ = {
 			isa = PBXGroup;
 			children = (
+				1B27E66A213530850014AC4A /* Support */,
+				1B27E6622134FDE70014AC4A /* Scene */,
 				08787ACA21352B6D00569477 /* API */,
 				08787AC32135278100569477 /* Model */,
 				08787AA32134F13500569477 /* Extension */,
@@ -249,6 +257,14 @@
 				E625F21083A8C8D24E625011 /* Pods-MyEditor.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		1B27E66A213530850014AC4A /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				1B27E66B213530920014AC4A /* Utils.swift */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -402,6 +418,7 @@
 				08787AC12134F24000569477 /* ViewModelType.swift in Sources */,
 				08787A922134DC3100569477 /* AppDelegate.swift in Sources */,
 				08787ABC2134F24000569477 /* ViewModelType+Loadmore.swift in Sources */,
+				1B27E66C213530920014AC4A /* Utils.swift in Sources */,
 				08787ACF21352BF000569477 /* BaseError.swift in Sources */,
 				08787AC72135286200569477 /* Photo.swift in Sources */,
 				08787AF921352D0A00569477 /* PhotoRequest.swift in Sources */,
@@ -559,13 +576,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VG5JZ5RSZ7;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MyEditor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.MyEditor;
+				PRODUCT_BUNDLE_IDENTIFIER = shin.MyEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -578,13 +596,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VG5JZ5RSZ7;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MyEditor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.MyEditor;
+				PRODUCT_BUNDLE_IDENTIFIER = shin.MyEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
