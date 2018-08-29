@@ -15,6 +15,6 @@ class CollectionRequest: BaseRequest {
             "page": page,
             "per_page": perPage,
         ]
-        super.init(url: URLs.getAllCollectionsUrl, requestType: .get, body: body)
+        super.init(url: URLs.collectionsUrl, requestType: .get, body: body)
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 
 struct URLs {
     static let baseUrl = "https://api.unsplash.com"
-    static let getAllPhotosUrl = baseUrl + "/photos"
-    static let getAllCollectionsUrl = baseUrl + "/collections"
+    static let photosUrl = baseUrl + "/photos"
+    static let collectionsUrl = baseUrl + "/collections"
     static let searchUrl = baseUrl + "/search/photos"
 }
