@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 
 class Photo: Mappable {
-    var id = 0
+    var id = ""
     var description = ""
     var width = 0
     var height = 0

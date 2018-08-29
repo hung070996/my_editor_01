@@ -41,6 +41,9 @@
 		08F6EE8321363CA900F895B6 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F6EE8221363CA900F895B6 /* SearchResponse.swift */; };
 		08F6EE8521363CF000F895B6 /* CollectionResquest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F6EE8421363CF000F895B6 /* CollectionResquest.swift */; };
 		08F6EE8721363DBC00F895B6 /* CollectionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F6EE8621363DBC00F895B6 /* CollectionResponse.swift */; };
+		08F6EE8A21364A1B00F895B6 /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F6EE8921364A1B00F895B6 /* DownloadService.swift */; };
+		08F6EE8C2136599F00F895B6 /* PHPhotoLibrary+SaveImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F6EE8B2136599F00F895B6 /* PHPhotoLibrary+SaveImage.swift */; };
+		08F6EE8E2136755000F895B6 /* PhotoInCollectionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F6EE8D2136755000F895B6 /* PhotoInCollectionRequest.swift */; };
 		1B27E66C213530920014AC4A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27E66B213530920014AC4A /* Utils.swift */; };
 		1B757C2B213643CA0007B882 /* IntroNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B757C28213643CA0007B882 /* IntroNavigator.swift */; };
 		1B757C2C213643CA0007B882 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B757C29213643CA0007B882 /* Intro.storyboard */; };
@@ -91,6 +94,9 @@
 		08F6EE8221363CA900F895B6 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		08F6EE8421363CF000F895B6 /* CollectionResquest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionResquest.swift; sourceTree = "<group>"; };
 		08F6EE8621363DBC00F895B6 /* CollectionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionResponse.swift; sourceTree = "<group>"; };
+		08F6EE8921364A1B00F895B6 /* DownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadService.swift; sourceTree = "<group>"; };
+		08F6EE8B2136599F00F895B6 /* PHPhotoLibrary+SaveImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHPhotoLibrary+SaveImage.swift"; sourceTree = "<group>"; };
+		08F6EE8D2136755000F895B6 /* PhotoInCollectionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInCollectionRequest.swift; sourceTree = "<group>"; };
 		1B27E66B213530920014AC4A /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		1B757C28213643CA0007B882 /* IntroNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroNavigator.swift; sourceTree = "<group>"; };
 		1B757C29213643CA0007B882 /* Intro.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
@@ -163,6 +169,7 @@
 				08787AA72134F13500569477 /* UIViewController+.swift */,
 				08787AA82134F13500569477 /* UIViewController+Rx.swift */,
 				08787AA92134F13500569477 /* Observable+.swift */,
+				08F6EE8B2136599F00F895B6 /* PHPhotoLibrary+SaveImage.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -237,6 +244,7 @@
 				08787AF821352D0A00569477 /* PhotoRequest.swift */,
 				08F6EE8421363CF000F895B6 /* CollectionResquest.swift */,
 				08F6EE8021363C5200F895B6 /* SearchRequest.swift */,
+				08F6EE8D2136755000F895B6 /* PhotoInCollectionRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -256,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				08787B02213530B700569477 /* APIService.swift */,
+				08F6EE8921364A1B00F895B6 /* DownloadService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -432,6 +441,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MyEditor/Pods-MyEditor-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/MKProgress/MKProgress.framework",
@@ -448,6 +458,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MKProgress.framework",
@@ -484,8 +495,10 @@
 				08787AE521352C3400569477 /* BaseRequest.swift in Sources */,
 				08F6EE8121363C5200F895B6 /* SearchRequest.swift in Sources */,
 				08787ABB2134F24000569477 /* RefreshAutoHeader.swift in Sources */,
+				08F6EE8C2136599F00F895B6 /* PHPhotoLibrary+SaveImage.swift in Sources */,
 				08787B002135301D00569477 /* PhotoResponse.swift in Sources */,
 				08787AAA2134F13500569477 /* BindableType.swift in Sources */,
+				08F6EE8E2136755000F895B6 /* PhotoInCollectionRequest.swift in Sources */,
 				08787AAF2134F13500569477 /* Observable+.swift in Sources */,
 				08787AC02134F24000569477 /* PagingInfo.swift in Sources */,
 				1B757C36213645A00007B882 /* ImageCollectionCell.swift in Sources */,
@@ -510,6 +523,7 @@
 				08787ABE2134F24000569477 /* RefreshTableView.swift in Sources */,
 				08787B0C213537E700569477 /* APIKey.swift in Sources */,
 				08787AC22134F24000569477 /* HasID.swift in Sources */,
+				08F6EE8A21364A1B00F895B6 /* DownloadService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

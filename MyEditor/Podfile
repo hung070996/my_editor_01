@@ -19,4 +19,5 @@ pod 'Then'
 pod 'OrderedSet'
 pod 'paper-onboarding'
 pod 'SnapKit'
+pod 'Kingfisher'
 end

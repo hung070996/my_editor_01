@@ -15,6 +15,6 @@ class PhotoRequest: BaseRequest {
             "page": page,
             "per_page": perPage
         ]
-        super.init(url: URLs.getAllPhotosUrl, requestType: .get, body: body)
+        super.init(url: URLs.photosUrl, requestType: .get, body: body)
     }
 }
