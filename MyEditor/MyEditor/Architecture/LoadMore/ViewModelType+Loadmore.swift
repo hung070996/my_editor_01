@@ -110,7 +110,7 @@ extension ViewModelType {
                 .filter { !$0.items.isEmpty }
                 .do(onNext: { page in
                     let currentPage = pageSubject.value
-                    let items: OrderedSet<T> = currentPage.items + page.items
+                    let items: [T] = currentPage.items + page.items
                     let newPage = PagingInfo<T>(page: page.page, items: items)
                     pageSubject.accept(newPage)
                 })

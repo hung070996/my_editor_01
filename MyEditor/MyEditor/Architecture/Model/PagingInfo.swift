@@ -8,8 +8,18 @@
 
 import OrderedSet
 
-struct PagingInfo<T: Hashable> {
+struct PagingInfo<T> {
     let page: Int
-    let items: OrderedSet<T>
+    let items: [T]
+    
+    init(items: [T]) {
+        self.page = 1
+        self.items = items
+    }
+    
+    init(page: Int, items: [T]) {
+        self.page = page
+        self.items = items
+    }
 }
 
