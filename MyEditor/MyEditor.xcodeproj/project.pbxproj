@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08072A9A21377FB40020F80E /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08072A9921377FB40020F80E /* AppNavigator.swift */; };
+		08072A9D213780720020F80E /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08072A9C213780720020F80E /* Storyboards.swift */; };
+		08072AA02137817D0020F80E /* Library.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08072A9F2137817D0020F80E /* Library.storyboard */; };
+		08072AA2213781980020F80E /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08072AA1213781980020F80E /* LibraryViewController.swift */; };
+		08072AA4213783860020F80E /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08072AA3213783860020F80E /* AppViewModel.swift */; };
+		08072AA6213783AC0020F80E /* AppUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08072AA5213783AC0020F80E /* AppUseCase.swift */; };
 		08787A922134DC3100569477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787A912134DC3100569477 /* AppDelegate.swift */; };
 		08787A972134DC3100569477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08787A952134DC3100569477 /* Main.storyboard */; };
 		08787A992134DC3200569477 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08787A982134DC3200569477 /* Assets.xcassets */; };
@@ -58,6 +64,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08072A9921377FB40020F80E /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
+		08072A9C213780720020F80E /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
+		08072A9F2137817D0020F80E /* Library.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Library.storyboard; sourceTree = "<group>"; };
+		08072AA1213781980020F80E /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		08072AA3213783860020F80E /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		08072AA5213783AC0020F80E /* AppUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUseCase.swift; sourceTree = "<group>"; };
 		08787A8E2134DC3100569477 /* MyEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08787A912134DC3100569477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08787A962134DC3100569477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -124,6 +136,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08072A9821377F640020F80E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				08787A912134DC3100569477 /* AppDelegate.swift */,
+				08072A9921377FB40020F80E /* AppNavigator.swift */,
+				08072AA3213783860020F80E /* AppViewModel.swift */,
+				08072AA5213783AC0020F80E /* AppUseCase.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		08072A9B2137805F0020F80E /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				08072A9C213780720020F80E /* Storyboards.swift */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		08072A9E213781510020F80E /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				08072A9F2137817D0020F80E /* Library.storyboard */,
+				08072AA1213781980020F80E /* LibraryViewController.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		08787A852134DC3100569477 = {
 			isa = PBXGroup;
 			children = (
@@ -145,13 +185,14 @@
 		08787A902134DC3100569477 /* MyEditor */ = {
 			isa = PBXGroup;
 			children = (
+				08072A9B2137805F0020F80E /* Storyboards */,
+				08072A9821377F640020F80E /* App */,
 				1B757C26213643460007B882 /* Scene */,
 				1B27E66A213530850014AC4A /* Support */,
 				08787ACA21352B6D00569477 /* API */,
 				08787AC32135278100569477 /* Model */,
 				08787AA32134F13500569477 /* Extension */,
 				08787AB02134F24000569477 /* Architecture */,
-				08787A912134DC3100569477 /* AppDelegate.swift */,
 				08787A952134DC3100569477 /* Main.storyboard */,
 				08787A982134DC3200569477 /* Assets.xcassets */,
 				08787A9A2134DC3200569477 /* LaunchScreen.storyboard */,
@@ -305,6 +346,7 @@
 		1B757C26213643460007B882 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				08072A9E213781510020F80E /* Library */,
 				1B757C2E2136451E0007B882 /* Home */,
 				1B757C27213643520007B882 /* IntroView */,
 			);
@@ -408,6 +450,7 @@
 				1B757C37213645A00007B882 /* ImageCollectionCell.xib in Resources */,
 				08787A972134DC3100569477 /* Main.storyboard in Resources */,
 				1B757C2C213643CA0007B882 /* Intro.storyboard in Resources */,
+				08072AA02137817D0020F80E /* Library.storyboard in Resources */,
 				1B757C3D213645D00007B882 /* ImageTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,6 +533,7 @@
 				08787AAC2134F13500569477 /* ActivityIndicator.swift in Sources */,
 				08787AC9213528FF00569477 /* URLPhoto.swift in Sources */,
 				1B757C32213645620007B882 /* HomeViewController.swift in Sources */,
+				08072A9D213780720020F80E /* Storyboards.swift in Sources */,
 				08787AAD2134F13500569477 /* UIViewController+.swift in Sources */,
 				1B757C2B213643CA0007B882 /* IntroNavigator.swift in Sources */,
 				08787AE521352C3400569477 /* BaseRequest.swift in Sources */,
@@ -503,6 +547,7 @@
 				08787AC02134F24000569477 /* PagingInfo.swift in Sources */,
 				1B757C36213645A00007B882 /* ImageCollectionCell.swift in Sources */,
 				08787AC12134F24000569477 /* ViewModelType.swift in Sources */,
+				08072A9A21377FB40020F80E /* AppNavigator.swift in Sources */,
 				08F6EE8721363DBC00F895B6 /* CollectionResponse.swift in Sources */,
 				08F6EE8521363CF000F895B6 /* CollectionResquest.swift in Sources */,
 				1B757C3C213645D00007B882 /* ImageTableCell.swift in Sources */,
@@ -510,6 +555,7 @@
 				1B757C2D213643CA0007B882 /* IntroViewController.swift in Sources */,
 				08787ABC2134F24000569477 /* ViewModelType+Loadmore.swift in Sources */,
 				1B27E66C213530920014AC4A /* Utils.swift in Sources */,
+				08072AA2213781980020F80E /* LibraryViewController.swift in Sources */,
 				08787ACF21352BF000569477 /* BaseError.swift in Sources */,
 				08787AC72135286200569477 /* Photo.swift in Sources */,
 				08787AF921352D0A00569477 /* PhotoRequest.swift in Sources */,
@@ -523,6 +569,8 @@
 				08787ABE2134F24000569477 /* RefreshTableView.swift in Sources */,
 				08787B0C213537E700569477 /* APIKey.swift in Sources */,
 				08787AC22134F24000569477 /* HasID.swift in Sources */,
+				08072AA6213783AC0020F80E /* AppUseCase.swift in Sources */,
+				08072AA4213783860020F80E /* AppViewModel.swift in Sources */,
 				08F6EE8A21364A1B00F895B6 /* DownloadService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
