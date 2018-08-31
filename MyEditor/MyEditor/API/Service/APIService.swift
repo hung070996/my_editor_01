@@ -28,7 +28,6 @@ struct APIService {
         print("link: %@", input.url)
         print("body: %@", input.body ?? "No Body")
         print("------------ END REQUEST INPUT\n")
-        
         return Observable.create { observer in
             self.alamofireManager.request(input.url, method: input.requestType,
                                           parameters: input.body, encoding: input.encoding)
@@ -45,6 +44,11 @@ struct APIService {
                         if statusCode == 200 {
                             if let object = Mapper<T>().map(JSONObject: value) {
                                 observer.onNext(object)
+                            } else {
+                                let json: [String: Any] = ["data": value]
+                                if let object = Mapper<T>().map(JSONObject: json) {
+                                    observer.onNext(object)
+                                }
                             }
                         } else {
                             guard let object = Mapper<ErrorResponse>().map(JSONObject: value) else {

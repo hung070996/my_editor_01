@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="KGk-i7-Jjw" customClass="ListAlbumCell" customModule="MyEditor" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7wJ-gg-bJP">
+                        <rect key="frame" x="5" y="5" width="88" height="88"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="7wJ-gg-bJP" secondAttribute="height" id="ARs-K2-L2N"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ykv-uT-NyN">
+                        <rect key="frame" x="103" y="5" width="267" height="88"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odX-Y0-9Gd">
+                                <rect key="frame" x="0.0" y="0.0" width="267" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIv-Kl-pWP">
+                                <rect key="frame" x="0.0" y="44" width="267" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Ykv-uT-NyN" firstAttribute="height" secondItem="7wJ-gg-bJP" secondAttribute="height" id="1pB-OT-CwA"/>
+                    <constraint firstItem="Ykv-uT-NyN" firstAttribute="centerY" secondItem="7wJ-gg-bJP" secondAttribute="centerY" id="9nd-8W-jpG"/>
+                    <constraint firstItem="7wJ-gg-bJP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="DQz-Uk-NmI"/>
+                    <constraint firstAttribute="trailing" secondItem="Ykv-uT-NyN" secondAttribute="trailing" constant="5" id="G3u-lg-iJt"/>
+                    <constraint firstItem="Ykv-uT-NyN" firstAttribute="leading" secondItem="7wJ-gg-bJP" secondAttribute="trailing" constant="10" id="jZb-eh-bN7"/>
+                    <constraint firstItem="7wJ-gg-bJP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="n5H-9p-GY0"/>
+                    <constraint firstItem="7wJ-gg-bJP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="qO3-Ql-ctJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="amountLabel" destination="sIv-Kl-pWP" id="t80-T6-2x7"/>
+                <outlet property="iconAlbumImageView" destination="7wJ-gg-bJP" id="euY-6Q-ytG"/>
+                <outlet property="nameLabel" destination="odX-Y0-9Gd" id="Ffh-bL-Ff2"/>
+            </connections>
+            <point key="canvasLocation" x="52.5" y="80"/>
+        </tableViewCell>
+    </objects>
+</document>
