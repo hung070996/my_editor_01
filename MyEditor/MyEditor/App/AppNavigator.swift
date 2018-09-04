@@ -25,12 +25,18 @@ struct AppNavigator: AppNavigatorType {
     unowned let window: UIWindow
     
     func start() {
+        //Tab Home
         let homeViewController = HomeViewController.instantiate()
         let homeNavigationController = UINavigationController(rootViewController: homeViewController)
         homeNavigationController.tabBarItem = UITabBarItem(title: Constant.home, image: UIImage(named: Constant.iconHome), selectedImage: UIImage(named: Constant.iconHome))
+        //Tab Library
         let libraryViewController = LibraryViewController.instantiate()
         let libraryNavigationController = UINavigationController(rootViewController: libraryViewController)
         libraryNavigationController.tabBarItem = UITabBarItem(title: Constant.library, image: UIImage(named: Constant.iconLibrary), selectedImage: UIImage(named: Constant.iconLibrary))
+        let libraryNavigator = LibraryNavigator(navigationController: libraryNavigationController)
+        let libraryUseCase = LibraryUseCase()
+        let libraryViewModel = LibraryViewModel(useCase: libraryUseCase, navigator: libraryNavigator)
+        libraryViewController.bindViewModel(to: libraryViewModel)
         let tabBarController = UITabBarController()
         tabBarController.addChildViewController(homeNavigationController)
         tabBarController.addChildViewController(libraryNavigationController)

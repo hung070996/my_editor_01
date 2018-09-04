@@ -17,6 +17,6 @@ class PhotoResponse: Mappable {
     }
     
     func mapping(map: Map) {
-        listPhotos <- map
+        listPhotos <- map["data"]
     }
 }

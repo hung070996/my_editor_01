@@ -13,6 +13,13 @@
 		08072AA2213781980020F80E /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08072AA1213781980020F80E /* LibraryViewController.swift */; };
 		08072AA4213783860020F80E /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08072AA3213783860020F80E /* AppViewModel.swift */; };
 		08072AA6213783AC0020F80E /* AppUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08072AA5213783AC0020F80E /* AppUseCase.swift */; };
+		08072AAC2137A1F80020F80E /* ListAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08072AAA2137A1F80020F80E /* ListAlbumCell.swift */; };
+		08072AAD2137A1F80020F80E /* ListAlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08072AAB2137A1F80020F80E /* ListAlbumCell.xib */; };
+		0851BB952138D0900059C43F /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0851BB942138D0900059C43F /* Album.swift */; };
+		0851BB972138D2400059C43F /* LibraryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0851BB962138D2400059C43F /* LibraryRepository.swift */; };
+		0851BB992138D5630059C43F /* LibraryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0851BB982138D5630059C43F /* LibraryUseCase.swift */; };
+		0851BB9B2138D6120059C43F /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0851BB9A2138D6120059C43F /* LibraryViewModel.swift */; };
+		0851BB9D2138D6DD0059C43F /* LibraryNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0851BB9C2138D6DD0059C43F /* LibraryNavigator.swift */; };
 		08787A922134DC3100569477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787A912134DC3100569477 /* AppDelegate.swift */; };
 		08787A972134DC3100569477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08787A952134DC3100569477 /* Main.storyboard */; };
 		08787A992134DC3200569477 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08787A982134DC3200569477 /* Assets.xcassets */; };
@@ -74,6 +81,13 @@
 		08072AA1213781980020F80E /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		08072AA3213783860020F80E /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		08072AA5213783AC0020F80E /* AppUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUseCase.swift; sourceTree = "<group>"; };
+		08072AAA2137A1F80020F80E /* ListAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAlbumCell.swift; sourceTree = "<group>"; };
+		08072AAB2137A1F80020F80E /* ListAlbumCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListAlbumCell.xib; sourceTree = "<group>"; };
+		0851BB942138D0900059C43F /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		0851BB962138D2400059C43F /* LibraryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRepository.swift; sourceTree = "<group>"; };
+		0851BB982138D5630059C43F /* LibraryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryUseCase.swift; sourceTree = "<group>"; };
+		0851BB9A2138D6120059C43F /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
+		0851BB9C2138D6DD0059C43F /* LibraryNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryNavigator.swift; sourceTree = "<group>"; };
 		08787A8E2134DC3100569477 /* MyEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08787A912134DC3100569477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08787A962134DC3100569477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -166,10 +180,23 @@
 		08072A9E213781510020F80E /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				08072AA92137A1D10020F80E /* Cell */,
 				08072A9F2137817D0020F80E /* Library.storyboard */,
 				08072AA1213781980020F80E /* LibraryViewController.swift */,
+				0851BB982138D5630059C43F /* LibraryUseCase.swift */,
+				0851BB9C2138D6DD0059C43F /* LibraryNavigator.swift */,
+				0851BB9A2138D6120059C43F /* LibraryViewModel.swift */,
 			);
 			path = Library;
+			sourceTree = "<group>";
+		};
+		08072AA92137A1D10020F80E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				08072AAA2137A1F80020F80E /* ListAlbumCell.swift */,
+				08072AAB2137A1F80020F80E /* ListAlbumCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		08787A852134DC3100569477 = {
@@ -261,6 +288,7 @@
 				08787AC4213527A800569477 /* Collection.swift */,
 				08787AC62135286200569477 /* Photo.swift */,
 				08787AC8213528FF00569477 /* URLPhoto.swift */,
+				0851BB942138D0900059C43F /* Album.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -400,6 +428,7 @@
 			children = (
 				1B757C4421366E400007B882 /* ImageRepository.swift */,
 				1B757C46213675410007B882 /* CollectionRepository.swift */,
+				0851BB962138D2400059C43F /* LibraryRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -471,6 +500,7 @@
 				08787A972134DC3100569477 /* Main.storyboard in Resources */,
 				1B757C2C213643CA0007B882 /* Intro.storyboard in Resources */,
 				08072AA02137817D0020F80E /* Library.storyboard in Resources */,
+				08072AAD2137A1F80020F80E /* ListAlbumCell.xib in Resources */,
 				1B757C3D213645D00007B882 /* ImageTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -564,9 +594,11 @@
 				08787AAA2134F13500569477 /* BindableType.swift in Sources */,
 				08F6EE8E2136755000F895B6 /* PhotoInCollectionRequest.swift in Sources */,
 				08787AAF2134F13500569477 /* Observable+.swift in Sources */,
+				0851BB9D2138D6DD0059C43F /* LibraryNavigator.swift in Sources */,
 				1B757C4921367DB10007B882 /* HomeUseCase.swift in Sources */,
 				08787AC02134F24000569477 /* PagingInfo.swift in Sources */,
 				1B757C36213645A00007B882 /* ImageCollectionCell.swift in Sources */,
+				0851BB952138D0900059C43F /* Album.swift in Sources */,
 				1B757C47213675410007B882 /* CollectionRepository.swift in Sources */,
 				08787AC12134F24000569477 /* ViewModelType.swift in Sources */,
 				08072A9A21377FB40020F80E /* AppNavigator.swift in Sources */,
@@ -577,10 +609,13 @@
 				1B757C3C213645D00007B882 /* ImageTableCell.swift in Sources */,
 				08787A922134DC3100569477 /* AppDelegate.swift in Sources */,
 				1B757C2D213643CA0007B882 /* IntroViewController.swift in Sources */,
+				0851BB992138D5630059C43F /* LibraryUseCase.swift in Sources */,
 				08787ABC2134F24000569477 /* ViewModelType+Loadmore.swift in Sources */,
 				1B27E66C213530920014AC4A /* Utils.swift in Sources */,
+				0851BB9B2138D6120059C43F /* LibraryViewModel.swift in Sources */,
 				08072AA2213781980020F80E /* LibraryViewController.swift in Sources */,
 				08787ACF21352BF000569477 /* BaseError.swift in Sources */,
+				0851BB972138D2400059C43F /* LibraryRepository.swift in Sources */,
 				08787AC72135286200569477 /* Photo.swift in Sources */,
 				08787AF921352D0A00569477 /* PhotoRequest.swift in Sources */,
 				08787AAB2134F13500569477 /* ErrorTracker.swift in Sources */,
@@ -596,6 +631,7 @@
 				08072AA6213783AC0020F80E /* AppUseCase.swift in Sources */,
 				08072AA4213783860020F80E /* AppViewModel.swift in Sources */,
 				08F6EE8A21364A1B00F895B6 /* DownloadService.swift in Sources */,
+				08072AAC2137A1F80020F80E /* ListAlbumCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,14 +777,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = VG5JZ5RSZ7;
 				INFOPLIST_FILE = MyEditor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = shin.MyEditor;
+				PRODUCT_BUNDLE_IDENTIFIER = hung.MyEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -761,14 +797,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = VG5JZ5RSZ7;
 				INFOPLIST_FILE = MyEditor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = shin.MyEditor;
+				PRODUCT_BUNDLE_IDENTIFIER = hung.MyEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
