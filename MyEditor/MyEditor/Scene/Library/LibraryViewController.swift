@@ -27,7 +27,8 @@ class LibraryViewController: UIViewController, BindableType {
     
     func bindViewModel() {
         let input = LibraryViewModel.Input(
-            loadTrigger: Driver.just(())
+            loadTrigger: Driver.just(()),
+            selectAlbumTrigger: tableView.rx.itemSelected.asDriver()
         )
         let output = viewModel.transform(input)
         output.listAlbums.drive(tableView.rx.items) { tableView, index, element in
@@ -36,6 +37,7 @@ class LibraryViewController: UIViewController, BindableType {
             cell.setContentForCell(album: element)
             return cell
         }.disposed(by: rx.disposeBag)
+        output.selectedAlbum.drive().disposed(by: rx.disposeBag)
     }
 }
 

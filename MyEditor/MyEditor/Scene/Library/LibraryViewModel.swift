@@ -13,10 +13,12 @@ import RxCocoa
 struct LibraryViewModel: ViewModelType {
     struct Input {
         let loadTrigger: Driver<Void>
+        let selectAlbumTrigger: Driver<IndexPath>
     }
     
     struct Output {
         let listAlbums: Driver<[Album]>
+        let selectedAlbum: Driver<Void>
     }
     
     let useCase: LibraryUseCaseType
@@ -30,8 +32,15 @@ struct LibraryViewModel: ViewModelType {
                     .trackError(errorTracker)
                     .asDriverOnErrorJustComplete()
         }
+        let selectedAlbum = input.selectAlbumTrigger
+            .withLatestFrom(listAlbum) { indexPath, listAlbum in
+                self.navigator.toListImage(in: listAlbum[indexPath.row])
+            }
+            .mapToVoid()
+        
         return Output(
-            listAlbums: listAlbum
+            listAlbums: listAlbum,
+            selectedAlbum: selectedAlbum
         )
     }
 }
