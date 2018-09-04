@@ -14,9 +14,9 @@ import RxCocoa
 class HomeViewController: UIViewController, BindableType {
     @IBOutlet weak var exploreCollectionView: LoadMoreCollectionView!
     @IBOutlet weak var photosTableView: RefreshTableView!
-    @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var topView: UIView!
     var viewModel: HomeViewModel!
+    var arrPhotos = [Photo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,10 +43,10 @@ class HomeViewController: UIViewController, BindableType {
     func bindViewModel() {
         let input = HomeViewModel.Input(
             loadTrigger: Driver.just(()),
-            loadCollectionTrigger:  Driver.never(),
-            reloadTableViewTrigger: Driver.never(),
+            loadCollectionTrigger:  Driver.just(()),
+            reloadTableViewTrigger: photosTableView.loadMoreTopTrigger,
             loadMoreTableViewTrigger: photosTableView.loadMoreBottomTrigger,
-            reloadCollectionViewTrigger: exploreCollectionView.loadMoreTrigger,
+            reloadCollectionViewTrigger: exploreCollectionView.refreshTrigger,
             loadMoreCollectionViewTrigger: exploreCollectionView.loadMoreTrigger,
             selectTableViewTrigger: photosTableView.rx.itemSelected.asDriver(),
             selectCollectionViewTrigger: exploreCollectionView.rx.itemSelected.asDriver()
@@ -56,6 +56,11 @@ class HomeViewController: UIViewController, BindableType {
         output.photos
             .drive(photosTableView.rx.items) { tableView, index, photo in
                 let indexPath = IndexPath(row: index, section: 0)
+                if indexPath.row >= self.arrPhotos.count {
+                    self.arrPhotos.append(photo)
+                } else {
+                    self.arrPhotos[indexPath.row] = photo
+                }
                 let cell = tableView.dequeueReusableCell(for: indexPath) as ImageTableCell
                 cell.fillData(url: photo.urls.regular, author: photo.id + "")
                 return cell
@@ -65,7 +70,7 @@ class HomeViewController: UIViewController, BindableType {
             .drive(exploreCollectionView.rx.items) { collectionView, index, collection in
                 let indexPath = IndexPath(item: index, section: 0)
                 let cell = collectionView.dequeueReusableCell(for: indexPath) as ImageCollectionCell
-                cell.fillData(url: collection.coverPhoto.urls.full, title: collection.title)
+                cell.fillData(url: collection.coverPhoto.urls.regular, title: collection.title)
                 return cell
             }
             .disposed(by: rx.disposeBag)
@@ -102,7 +107,7 @@ class HomeViewController: UIViewController, BindableType {
         output.loadingMoreTableView
             .drive(photosTableView.loadingMoreBottom)
             .disposed(by: rx.disposeBag)
-        output.loadingCollectionView
+        output.loadingMoreCollectionView
             .drive(exploreCollectionView.loadingMore)
             .disposed(by: rx.disposeBag)
     }
@@ -112,6 +117,43 @@ extension HomeViewController: StoryboardSceneBased {
     static var sceneStoryboard = Storyboards.home
 }
 
-extension HomeViewController: UICollectionViewDelegate {
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    private struct CollectionConstantData {
+        static let edgeInset = UIEdgeInsetsMake(0, 10, 0, 10)
+        static let offsetOfItem = 20
+        static let sectionSpacing = 20
+    }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let cell = cell as? ImageCollectionCell {
+            cell.getImagView().makeCornerRadius()
+            cell.getImagView().addBlurEffect()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.size.width - CGFloat(CollectionConstantData.offsetOfItem), height: collectionView.bounds.size.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return CollectionConstantData.edgeInset
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return CGFloat(CollectionConstantData.sectionSpacing)
+    }
+}
+
+extension HomeViewController: UITableViewDelegate {
+    private struct TableConstantData {
+        static let defaultHeight = 300
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row < self.arrPhotos.count {
+            let ratio = CGFloat(self.arrPhotos[indexPath.row].width) / CGFloat(self.arrPhotos[indexPath.row].height)
+            return CGFloat(tableView.bounds.size.width) / ratio
+        }
+        return CGFloat(TableConstantData.defaultHeight)
+    }
 }

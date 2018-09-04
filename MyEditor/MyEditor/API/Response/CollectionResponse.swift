@@ -17,6 +17,6 @@ class CollectionResponse: Mappable {
     }
     
     func mapping(map: Map) {
-        listCollections <- map
+        listCollections <- map["data"]
     }
 }
