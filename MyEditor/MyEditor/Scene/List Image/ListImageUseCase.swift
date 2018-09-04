@@ -23,11 +23,11 @@ struct ListImageUseCase: ListImageUseCaseType {
         var listImage = [UIImage]()
         let assets = PHAsset.fetchAssets(in: album.collection, options: nil)
         for i in 0 ..< assets.count {
-            let asset = assets.object(at: i)
+            let asset = assets.object(at: assets.count - 1 - i)
             PHImageManager.default()
                 .requestImage(for: asset,
                               targetSize: CGSize(width: Constant.defaultSize, height: Constant.defaultSize),
-                              contentMode: PHImageContentMode.default,
+                              contentMode: PHImageContentMode.aspectFill,
                               options: nil) { (image, _) in
                                 guard let image = image else {
                                     return

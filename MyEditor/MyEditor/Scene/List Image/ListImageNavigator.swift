@@ -19,12 +19,15 @@ struct ListImageNavigator: ListImageNavigatorType {
     
     func toListImage(in album: Album) {
         let listImageViewController = ListImageViewController.instantiate()
-        let listImageViewModel = ListImageViewModel(album: album, useCase: ListImageUseCase())
+        let listImageViewModel = ListImageViewModel(album: album,
+                                                    useCase: ListImageUseCase(),
+                                                    navigator: ListImageNavigator(navigationController: navigationController))
         listImageViewController.bindViewModel(to: listImageViewModel)
         navigationController.pushViewController(listImageViewController, animated: true)
     }
     
     func toImageDetail(image: UIImage) {
-        
+        let navigator = ImageDetailNavigator(navigationController: navigationController)
+        navigator.toImageDetail(image: image)
     }
 }
