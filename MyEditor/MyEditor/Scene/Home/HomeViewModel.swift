@@ -11,10 +11,10 @@ import RxCocoa
 
 struct HomeViewModel: ViewModelType {
     struct Input {
-        let loadTableViewTrigger: Driver<Void>
+        let loadTrigger: Driver<Void>
+        let loadCollectionTrigger: Driver<Void>
         let reloadTableViewTrigger: Driver<Void>
         let loadMoreTableViewTrigger: Driver<Void>
-        let loadCollectionViewTrigger: Driver<Void>
         let reloadCollectionViewTrigger: Driver<Void>
         let loadMoreCollectionViewTrigger: Driver<Void>
         let selectTableViewTrigger: Driver<IndexPath>
@@ -38,16 +38,17 @@ struct HomeViewModel: ViewModelType {
         let isEmptyCollectionData: Driver<Bool>
     }
     
+    let navigator: HomeNavigatorType
     let useCase: HomeUseCase
     
     func transform(_ input: Input) -> Output {
-        let loadMoreOutputTableView = setupLoadMorePaging(loadTrigger: input.loadTableViewTrigger,
+        let loadMoreOutputTableView = setupLoadMorePaging(loadTrigger: input.loadTrigger,
                                                           getItems: useCase.getPhotos,
                                                           refreshTrigger: input.reloadTableViewTrigger,
                                                           refreshItems: useCase.getPhotos,
                                                           loadMoreTrigger: input.loadMoreTableViewTrigger,
                                                           loadMoreItems: useCase.getPhotos)
-        let loadMoreOutputCollectionView = setupLoadMorePaging(loadTrigger: input.loadCollectionViewTrigger,
+        let loadMoreOutputCollectionView = setupLoadMorePaging(loadTrigger: input.loadCollectionTrigger,
                                                           getItems: useCase.getCollections,
                                                           refreshTrigger: input.reloadCollectionViewTrigger,
                                                           refreshItems: useCase.getCollections,
