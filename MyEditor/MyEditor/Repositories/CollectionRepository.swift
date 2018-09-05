@@ -10,6 +10,7 @@ import RxSwift
 
 protocol CollectionRepositoryType {
     func getListCollection(page: Int, perPage: Int) -> Observable<[Collection]>
+    func getImagesInCollection(collection: Collection, page: Int, perPage: Int) -> Observable<[Photo]>
 }
 
 final class CollectionRepository: CollectionRepositoryType {
@@ -24,6 +25,14 @@ final class CollectionRepository: CollectionRepositoryType {
         return api.request(input: request)
             .map { (output: CollectionResponse) -> [Collection] in
                 return output.listCollections
+            }
+    }
+    
+    func getImagesInCollection(collection: Collection, page: Int = 1, perPage: Int = 10) -> Observable<[Photo]> {
+        let request = PhotoInCollectionRequest(collection: collection, page: page, perPage: perPage)
+        return api.request(input: request)
+            .map { (output: PhotoResponse) -> [Photo] in
+                return output.listPhotos
             }
     }
 }

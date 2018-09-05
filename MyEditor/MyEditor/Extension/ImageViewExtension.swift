@@ -26,7 +26,14 @@ extension UIImageView {
         self.clipsToBounds = true
     }
     
-    func addBlurEffect(alpha: Float = 0.05) {
+    func removeAllEffect() {
+        for subview in self.subviews {
+            subview.removeFromSuperview()
+        }
+    }
+    
+    func addBlurEffect(alpha: Float = 0.2) {
+        removeAllEffect()
         let blurOverlay = getBlurView(style: .dark, alpha: CGFloat(alpha), superView: self)
         self.addSubview(blurOverlay)
         self.snp.remakeConstraints({ (make) in

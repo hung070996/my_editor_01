@@ -17,6 +17,8 @@ class ImageCollectionCell: UICollectionViewCell, NibReusable {
     func fillData(url: String, title: String) {
         displayImageView.setImageForUrl(urlString: url)
         titleLabel.text = title
+        displayImageView.makeCornerRadius()
+        displayImageView.addBlurEffect()
     }
     
     func getImageView() -> UIImageView {
