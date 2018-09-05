@@ -22,8 +22,7 @@ final class LibraryRepository: LibraryRepositoryType {
     func getListAlbum() -> Observable<[Album]> {
         return Observable.create { observer in
             var albums = [Album]()
-            let fetchOptions = PHFetchOptions()
-            let smartAlbums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .any, options: fetchOptions)
+            let smartAlbums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .any, options: nil)
             let topLevelUserCollections = PHCollectionList.fetchTopLevelUserCollections(with: nil)
             let allAlbums = [topLevelUserCollections, smartAlbums]
             for i in 0 ..< allAlbums.count {
@@ -32,9 +31,7 @@ final class LibraryRepository: LibraryRepositoryType {
                     guard let album = asset as? PHAssetCollection else {
                         return
                     }
-                    let options = PHFetchOptions()
-                    options.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
-                    let assets = PHAsset.fetchAssets(in: album, options: options)
+                    let assets = PHAsset.fetchAssets(in: album, options: nil)
                     guard let _ = assets.firstObject else {
                         return
                     }
@@ -47,7 +44,7 @@ final class LibraryRepository: LibraryRepositoryType {
                         guard let image = result else {
                             return
                         }
-                        let newAlbum = Album(name: album.localizedTitle!, count: assets.count, collection:album, latestImage: image)
+                        let newAlbum = Album(name: album.localizedTitle!, count: assets.count, collection: album, latestImage: image)
                         albums.append(newAlbum)
                     })
                 }

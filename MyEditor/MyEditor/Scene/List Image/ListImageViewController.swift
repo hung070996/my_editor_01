@@ -26,7 +26,8 @@ class ListImageViewController: UIViewController, BindableType {
     }
     
     func bindViewModel() {
-        let input = ListImageViewModel.Input(loadTrigger: Driver.just(()))
+        let input = ListImageViewModel.Input(loadTrigger: Driver.just(()),
+                                             selectImageTrigger: collectionView.rx.itemSelected.asDriver())
         let output = viewModel.transform(input)
         output.listImage
             .drive(collectionView.rx.items) { collectionView, index, element in
@@ -35,6 +36,9 @@ class ListImageViewController: UIViewController, BindableType {
             cell.setContentForCell(image: element)
             return cell
         }
+            .disposed(by: rx.disposeBag)
+        output.imageSelected
+            .drive()
             .disposed(by: rx.disposeBag)
     }
 }

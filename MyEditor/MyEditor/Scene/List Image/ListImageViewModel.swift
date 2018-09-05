@@ -14,22 +14,30 @@ import Photos
 struct ListImageViewModel: ViewModelType {
     struct Input {
         let loadTrigger: Driver<Void>
+        let selectImageTrigger: Driver<IndexPath>
     }
     
     struct Output {
         let listImage: Driver<[UIImage]>
+        let imageSelected: Driver<Void>
     }
     
     let album: Album
     let useCase: ListImageUseCase
+    let navigator: ListImageNavigator
     
     func transform(_ input: ListImageViewModel.Input) -> ListImageViewModel.Output {
-        let result = input.loadTrigger.flatMapLatest { _ in
+        let listImage = input.loadTrigger.flatMapLatest { _ in
             return self.useCase.getListImage(album: self.album)
                 .asDriverOnErrorJustComplete()
         }
+        let imageSelected = input.selectImageTrigger
+            .withLatestFrom(listImage) { indexPath, listImage in
+            self.navigator.toImageDetail(image: listImage[indexPath.row])
+        }
         return Output(
-            listImage: result
+            listImage: listImage,
+            imageSelected: imageSelected
         )
     }
 }
