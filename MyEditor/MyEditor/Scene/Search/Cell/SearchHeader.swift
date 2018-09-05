@@ -10,5 +10,9 @@ import UIKit
 import Reusable
 
 class SearchHeader: UITableViewHeaderFooterView, NibReusable {
-    @IBOutlet weak var sectionLabel: UILabel!
+    @IBOutlet private weak var sectionLabel: UILabel!
+    
+    func fillData(sectionName: String) {
+        sectionLabel.text = sectionName
+    }
 }

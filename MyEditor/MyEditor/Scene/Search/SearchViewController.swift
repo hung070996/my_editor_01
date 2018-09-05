@@ -17,10 +17,9 @@ class SearchViewController: UIViewController, BindableType {
     
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var cancelButton: UIButton!
-    @IBOutlet weak var searchTableView: UITableView!
+    @IBOutlet private weak var searchTableView: UITableView!
     
     var viewModel: SearchViewModel!
-    var querryObservable: Observable<String>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +34,12 @@ class SearchViewController: UIViewController, BindableType {
             return cell
         },
         titleForHeaderInSection: { dataSource, sectionIndex in
-//            return dataSource[sectionIndex].model
             return ""
         }
     )
     
     func configView() {
+        //config tableView
         searchTableView.rx
             .setDelegate(self)
             .disposed(by: rx.disposeBag)
@@ -51,39 +50,44 @@ class SearchViewController: UIViewController, BindableType {
             $0.register(headerFooterViewType: SearchHeader.self)
             $0.separatorStyle = .none
         }
-        querryObservable = searchBar.rx.textDidEndEditing.asObservable()
-                    .withLatestFrom(searchBar.rx.text.orEmpty.asObservable())
+        searchTableView.rx
+            .anyGesture(.swipe([.up, .down]))
+            .when(.recognized)
+            .subscribe(onNext: { [unowned self] _ in
+                self.dismissKeyboard()
+            })
+            .disposed(by: rx.disposeBag)
+//        //config Cancel button
+//        cancelButton.rx.tap.asObservable().subscribe(onNext: { _ in
+//                self.navigationController?.popViewController(animated: true)
+//            })
+//            .disposed(by: rx.disposeBag)
     }
     
     func bindViewModel() {
         let input = SearchViewModel.Input(
-            toHomeTrigger: cancelButton.rx.tap.asDriver(),
-            cancelKeyboardTrigger: searchTableView.rx
-                .anyGesture(.swipe([.up, .down]))
-                .when(.recognized)
-                .mapToVoid()
-                .asDriverOnErrorJustComplete(),
-            searchTrigger: querryObservable.asDriverOnErrorJustComplete(),
-            selectTrigger: searchTableView.rx.itemSelected.asDriverOnErrorJustComplete()
+            loadTrigger: Driver.just(()),
+            searchTrigger: searchBar.rx.textDidEndEditing.asDriver(),
+            selectTrigger: searchTableView.rx.itemSelected.asDriverOnErrorJustComplete(),
+            keywordTrigger: searchBar.rx.text.orEmpty.asDriver(),
+            cancelTrigger: cancelButton.rx.tap.asDriver()
         )
         let output = viewModel.transform(input)
-        output.resultCancelKeyboard
-            .drive(onNext: { [unowned self] _ in
-                self.dismissKeyboard()
-            })
-            .disposed(by: rx.disposeBag)
-        output.resultSearchQuery
-            .drive(onNext: { str in
-                //TODO: NEXT_TASK
-                print(str)
-            })
-            .disposed(by: rx.disposeBag)
         output.sectionedSuggest
             .map { $0.map { section in
                     SuggestSectionModel(model: section.header, items: section.productList)
                 }
             }
             .drive(searchTableView.rx.items(dataSource: dataSource))
+            .disposed(by: rx.disposeBag)
+        output.fetchData
+            .drive()
+            .disposed(by: rx.disposeBag)
+        output.loadResult
+            .drive()
+            .disposed(by: rx.disposeBag)
+        output.cancelTriggerResult
+            .drive()
             .disposed(by: rx.disposeBag)
     }
 }
@@ -93,13 +97,16 @@ extension SearchViewController: StoryboardSceneBased {
 }
 
 extension SearchViewController: UITableViewDelegate {
+    private struct ConstantData {
+        static let sectionHeader = 40
+    }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return CGFloat(ConstantData.sectionHeader)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(SearchHeader.self)
-        header?.sectionLabel.text = dataSource.sectionModels[section].model
+        header?.fillData(sectionName: dataSource.sectionModels[section].model)
         return header
     }
 }

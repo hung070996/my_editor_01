@@ -7,12 +7,20 @@
 //
 
 import Foundation
+import RxCocoa
 import RxSwift
 
 protocol SearchUseCaseType {
-    
+    func readHistory() -> [String]
+    func saveHistory(histories: [String])
 }
 
 struct SearchUseCase: SearchUseCaseType {
+    func readHistory() -> [String] {
+        return readHistorySearch()
+    }
     
+    func saveHistory(histories: [String]) {
+        return saveHistorySearch(histories: histories)
+    }
 }

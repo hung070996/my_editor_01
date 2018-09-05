@@ -17,6 +17,7 @@ class CollectionImageViewController: UIViewController, BindableType {
     private let toHomeScreenSubject = PublishSubject<Void>()
     var viewModel: CollectionImagesViewModel!
     var arrRatio = [CGFloat]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()

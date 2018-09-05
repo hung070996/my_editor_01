@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxCocoa
+
 fileprivate struct ConstantData {
     static let historiesKey = "Histories"
 }
