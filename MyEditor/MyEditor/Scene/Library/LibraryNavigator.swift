@@ -10,13 +10,14 @@ import Foundation
 import UIKit
 
 protocol LibraryNavigatorType {
-    func toListPhoto(in album: Album)
+    func toListImage(in album: Album)
 }
 
 struct LibraryNavigator: LibraryNavigatorType {
     unowned let navigationController: UINavigationController
     
-    func toListPhoto(in album: Album) {
-        
+    func toListImage(in album: Album) {
+        let navigator = ListImageNavigator(navigationController: navigationController)
+        navigator.toListImage(in: album)
     }
 }
