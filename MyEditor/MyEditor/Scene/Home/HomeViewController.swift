@@ -123,14 +123,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDelegate
         static let offsetOfItem = 20
         static let sectionSpacing = 20
     }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let cell = cell as? ImageCollectionCell {
-            cell.getImagView().makeCornerRadius()
-            cell.getImagView().addBlurEffect()
-        }
-    }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.size.width - CGFloat(CollectionConstantData.offsetOfItem), height: collectionView.bounds.size.height)
     }

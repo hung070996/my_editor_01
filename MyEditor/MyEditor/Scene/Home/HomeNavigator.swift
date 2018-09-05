@@ -24,7 +24,7 @@ struct HomeNavigator: HomeNavigatorType {
         vc.bindViewModel(to: model)
         self.navigationViewController.pushViewController(vc, animated: true)
     }
-    
+    //MARK: NEXT_TASK
     func toImageDetailScreen() {
         print("for next task")
     }
