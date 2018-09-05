@@ -11,7 +11,7 @@ import UIKit
 protocol HomeNavigatorType {
     func toHomeScreen()
     func toImageDetailScreen()
-    func toCollectionScreen()
+    func toCollectionScreen(collection: Collection)
     func toSearchScreen()
 }
 
@@ -24,12 +24,14 @@ struct HomeNavigator: HomeNavigatorType {
         vc.bindViewModel(to: model)
         self.navigationViewController.pushViewController(vc, animated: true)
     }
-    //MARK: NEXT_TASK
-    func toImageDetailScreen() {
-        print("for next task")
+    
+    func toCollectionScreen(collection: Collection) {
+        let navigator = CollectionImagesNavigator(navigationViewController: navigationViewController)
+        navigator.toCollectionImagesScreen(collection: collection)
     }
     
-    func toCollectionScreen() {
+    // TODO: - NEXT_TASK
+    func toImageDetailScreen() {
         print("for next task")
     }
     
