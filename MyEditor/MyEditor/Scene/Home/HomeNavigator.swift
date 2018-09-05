@@ -36,6 +36,7 @@ struct HomeNavigator: HomeNavigatorType {
     }
     
     func toSearchScreen() {
-        print("for next task")
+        let navigator = SearchNavigator(navigationViewController: navigationViewController)
+        navigator.toSearchScreen()
     }
 }

@@ -98,6 +98,13 @@
 		1BD4A3F22137915C0022643F /* HomeNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD4A3F12137915C0022643F /* HomeNavigator.swift */; };
 		1BD4A3F42137A8B80022643F /* LoadMoreCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD4A3F32137A8B70022643F /* LoadMoreCollectionView.swift */; };
 		1BD4A3F62137CBCB0022643F /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD4A3F52137CBCB0022643F /* ImageViewExtension.swift */; };
+		1BF8940C2140E09700EC6C3D /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BF8940B2140E09700EC6C3D /* Search.storyboard */; };
+		1BF894112140E27E00EC6C3D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF894102140E27E00EC6C3D /* SearchViewController.swift */; };
+		1BF894142140E2FE00EC6C3D /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF894122140E2FE00EC6C3D /* SearchCell.swift */; };
+		1BF894152140E2FE00EC6C3D /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BF894132140E2FE00EC6C3D /* SearchCell.xib */; };
+		1BF894172140FA0A00EC6C3D /* SearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF894162140FA0A00EC6C3D /* SearchUseCase.swift */; };
+		1BF894192140FDB700EC6C3D /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF894182140FDB700EC6C3D /* SearchViewModel.swift */; };
+		1BF8941B2141005200EC6C3D /* SearchNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF8941A2141005200EC6C3D /* SearchNavigator.swift */; };
 		CAD519AA52EBCA719AF780D4 /* Pods_MyEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B314E99F19649130D233435 /* Pods_MyEditor.framework */; };
 /* End PBXBuildFile section */
 
@@ -195,6 +202,13 @@
 		1BD4A3F12137915C0022643F /* HomeNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigator.swift; sourceTree = "<group>"; };
 		1BD4A3F32137A8B70022643F /* LoadMoreCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreCollectionView.swift; sourceTree = "<group>"; };
 		1BD4A3F52137CBCB0022643F /* ImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
+		1BF8940B2140E09700EC6C3D /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		1BF894102140E27E00EC6C3D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		1BF894122140E2FE00EC6C3D /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		1BF894132140E2FE00EC6C3D /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
+		1BF894162140FA0A00EC6C3D /* SearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCase.swift; sourceTree = "<group>"; };
+		1BF894182140FDB700EC6C3D /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		1BF8941A2141005200EC6C3D /* SearchNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavigator.swift; sourceTree = "<group>"; };
 		77172BC32C620FEE220EE457 /* Pods-MyEditor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyEditor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyEditor/Pods-MyEditor.debug.xcconfig"; sourceTree = "<group>"; };
 		7B314E99F19649130D233435 /* Pods_MyEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E625F21083A8C8D24E625011 /* Pods-MyEditor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyEditor.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyEditor/Pods-MyEditor.release.xcconfig"; sourceTree = "<group>"; };
@@ -516,6 +530,7 @@
 			isa = PBXGroup;
 			children = (
 				08DA31532140BF6300DE8E3B /* Edit Image */,
+				1BF8940A2140E08600EC6C3D /* Search */,
 				1B505031213F77810014C6A5 /* CollectionImages */,
 				08E77BC1213E7C7E000F93A3 /* ImageDetail */,
 				08C1F20B213E202D005704D2 /* List Image */,
@@ -568,6 +583,28 @@
 				0851BB962138D2400059C43F /* LibraryRepository.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		1BF8940A2140E08600EC6C3D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				1BF8940D2140E25000EC6C3D /* Cell */,
+				1BF8940B2140E09700EC6C3D /* Search.storyboard */,
+				1BF894102140E27E00EC6C3D /* SearchViewController.swift */,
+				1BF894162140FA0A00EC6C3D /* SearchUseCase.swift */,
+				1BF894182140FDB700EC6C3D /* SearchViewModel.swift */,
+				1BF8941A2141005200EC6C3D /* SearchNavigator.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		1BF8940D2140E25000EC6C3D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1BF894122140E2FE00EC6C3D /* SearchCell.swift */,
+				1BF894132140E2FE00EC6C3D /* SearchCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -630,12 +667,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BF894152140E2FE00EC6C3D /* SearchCell.xib in Resources */,
 				08787A9C2134DC3200569477 /* LaunchScreen.storyboard in Resources */,
 				1B757C302136454E0007B882 /* Home.storyboard in Resources */,
 				08C1F20D213E2052005704D2 /* ListImage.storyboard in Resources */,
 				08DA315D2140C19700DE8E3B /* EditCell.xib in Resources */,
 				08DA31582140C12B00DE8E3B /* EditView.xib in Resources */,
 				08787A992134DC3200569477 /* Assets.xcassets in Resources */,
+				1BF8940C2140E09700EC6C3D /* Search.storyboard in Resources */,
 				1B757C37213645A00007B882 /* ImageCollectionCell.xib in Resources */,
 				08787A972134DC3100569477 /* Main.storyboard in Resources */,
 				08DA31552140BF7A00DE8E3B /* EditImage.storyboard in Resources */,
@@ -678,6 +717,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MyEditor/Pods-MyEditor-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
@@ -687,6 +727,8 @@
 				"${BUILT_PRODUCTS_DIR}/OrderedSet/OrderedSet.framework",
 				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
@@ -695,6 +737,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
@@ -704,6 +747,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OrderedSet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGesture.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
@@ -725,6 +770,8 @@
 				08787B0D213537E700569477 /* URLs.swift in Sources */,
 				08787AC5213527A800569477 /* Collection.swift in Sources */,
 				08787AAC2134F13500569477 /* ActivityIndicator.swift in Sources */,
+				1BF894192140FDB700EC6C3D /* SearchViewModel.swift in Sources */,
+				1BF8941B2141005200EC6C3D /* SearchNavigator.swift in Sources */,
 				08787AC9213528FF00569477 /* URLPhoto.swift in Sources */,
 				1B757C32213645620007B882 /* HomeViewController.swift in Sources */,
 				1BD4A3F62137CBCB0022643F /* ImageViewExtension.swift in Sources */,
@@ -772,11 +819,13 @@
 				08072AA2213781980020F80E /* LibraryViewController.swift in Sources */,
 				08787ACF21352BF000569477 /* BaseError.swift in Sources */,
 				1B50503B213F91290014C6A5 /* CollectionImagesNavigator.swift in Sources */,
+				1BF894142140E2FE00EC6C3D /* SearchCell.swift in Sources */,
 				0851BB972138D2400059C43F /* LibraryRepository.swift in Sources */,
 				08DA315F2140C25A00DE8E3B /* EditView.swift in Sources */,
 				1BD4A3F22137915C0022643F /* HomeNavigator.swift in Sources */,
 				1B505037213F7A090014C6A5 /* CollectionImagesUseCase.swift in Sources */,
 				08C1F218213E28E5005704D2 /* ListImageViewController.swift in Sources */,
+				1BF894172140FA0A00EC6C3D /* SearchUseCase.swift in Sources */,
 				08787AC72135286200569477 /* Photo.swift in Sources */,
 				1B505039213F7C680014C6A5 /* CollectionImagesViewModel.swift in Sources */,
 				08787AF921352D0A00569477 /* PhotoRequest.swift in Sources */,
@@ -791,6 +840,7 @@
 				08F6EE8321363CA900F895B6 /* SearchResponse.swift in Sources */,
 				08787ABE2134F24000569477 /* RefreshTableView.swift in Sources */,
 				08787B0C213537E700569477 /* APIKey.swift in Sources */,
+				1BF894112140E27E00EC6C3D /* SearchViewController.swift in Sources */,
 				08787AC22134F24000569477 /* HasID.swift in Sources */,
 				08072AA6213783AC0020F80E /* AppUseCase.swift in Sources */,
 				08072AA4213783860020F80E /* AppViewModel.swift in Sources */,
@@ -944,10 +994,7 @@
 				DEVELOPMENT_TEAM = VG5JZ5RSZ7;
 				INFOPLIST_FILE = MyEditor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = c.MyEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -964,10 +1011,7 @@
 				DEVELOPMENT_TEAM = VG5JZ5RSZ7;
 				INFOPLIST_FILE = MyEditor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = c.MyEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

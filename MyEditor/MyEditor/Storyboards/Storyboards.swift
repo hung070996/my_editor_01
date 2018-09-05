@@ -16,4 +16,5 @@ struct Storyboards {
     static let imageDetail = UIStoryboard(name: "ImageDetail", bundle: nil)
     static let collectionImages = UIStoryboard(name: "CollectionImages", bundle: nil)
     static let editImage = UIStoryboard(name: "EditImage", bundle: nil)
+    static let search = UIStoryboard(name: "Search", bundle: nil)
 }

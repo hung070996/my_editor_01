@@ -20,4 +20,6 @@ pod 'OrderedSet'
 pod 'paper-onboarding'
 pod 'SnapKit'
 pod 'Kingfisher'
+pod 'RxGesture'
+pod 'RxDataSources'
 end
