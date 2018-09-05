@@ -18,4 +18,8 @@ class ImageCollectionCell: UICollectionViewCell, NibReusable {
         displayImageView.setImageForUrl(urlString: url)
         titleLabel.text = title
     }
+    
+    func getImageView() -> UIImageView {
+        return displayImageView
+    }
 }

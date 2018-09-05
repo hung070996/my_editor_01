@@ -17,7 +17,11 @@ class ImageTableCell: UITableViewCell, NibReusable {
     
     func fillData(url: String, author: String) {
         displayImageView.setNeedsLayout()
-        displayImageView.setImageForUrl(urlString: url, imageHolder: #imageLiteral(resourceName: "Intro_Background_Home"))
+        displayImageView.setImageForUrl(urlString: url)
         authorLabel.text = author
+    }
+    
+    func getImageView() -> UIImageView {
+        return displayImageView
     }
 }

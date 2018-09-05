@@ -23,8 +23,8 @@ final class ImageRepository: ImageRepositoryType {
     func getNewPhotos(page: Int = 1, perPage: Int = 10) -> Observable<[Photo]> {
         let request = PhotoRequest(page: page, perPage: perPage)
         return api.request(input: request)
-            .map { (output: SearchResponse) -> [Photo] in
-                return output.results
+            .map { (output: PhotoResponse) -> [Photo] in
+                return output.listPhotos
             }
     }
     

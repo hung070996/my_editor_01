@@ -7,6 +7,7 @@
 //
 
 import Kingfisher
+import SnapKit
 
 extension UIImageView {
     func setImageForUrl(urlString: String, imageHolder: UIImage? = nil) {
@@ -18,6 +19,22 @@ extension UIImageView {
         if let url = URL(string: urlString) {
             self.kf.setImage(with: url, placeholder: imageHolder, options: nil, progressBlock: nil, completionHandler: nil)
         }
+    }
+    
+    func makeCornerRadius(radius: Int = 30) {
+        self.layer.cornerRadius = CGFloat(radius)
+        self.clipsToBounds = true
+    }
+    
+    func addBlurEffect(alpha: Float = 0.05) {
+        let blurOverlay = getBlurView(style: .dark, alpha: CGFloat(alpha), superView: self)
+        self.addSubview(blurOverlay)
+        self.snp.remakeConstraints({ (make) in
+            make.top.equalTo(self.snp.top)
+            make.bottom.equalTo(self.snp.bottom)
+            make.left.equalTo(self.snp.left)
+            make.right.equalTo(self.snp.right)
+        })
     }
 }
 
