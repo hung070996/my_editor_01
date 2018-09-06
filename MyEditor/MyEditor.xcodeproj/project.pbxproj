@@ -57,6 +57,14 @@
 		08C1F214213E25E9005704D2 /* ListImageNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C1F213213E25E9005704D2 /* ListImageNavigator.swift */; };
 		08C1F216213E28C5005704D2 /* ListImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C1F215213E28C5005704D2 /* ListImageViewModel.swift */; };
 		08C1F218213E28E5005704D2 /* ListImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C1F217213E28E4005704D2 /* ListImageViewController.swift */; };
+		08DA31552140BF7A00DE8E3B /* EditImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08DA31542140BF7A00DE8E3B /* EditImage.storyboard */; };
+		08DA31582140C12B00DE8E3B /* EditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08DA31572140C12B00DE8E3B /* EditView.xib */; };
+		08DA315C2140C19700DE8E3B /* EditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DA315A2140C19700DE8E3B /* EditCell.swift */; };
+		08DA315D2140C19700DE8E3B /* EditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08DA315B2140C19700DE8E3B /* EditCell.xib */; };
+		08DA315F2140C25A00DE8E3B /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DA315E2140C25A00DE8E3B /* EditView.swift */; };
+		08DA31612140C5EE00DE8E3B /* EditImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DA31602140C5EE00DE8E3B /* EditImageViewController.swift */; };
+		08DA31632140C9FA00DE8E3B /* EditImageNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DA31622140C9FA00DE8E3B /* EditImageNavigator.swift */; };
+		08DA31652140CAE800DE8E3B /* EditImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DA31642140CAE800DE8E3B /* EditImageViewModel.swift */; };
 		08E77BC3213E7C95000F93A3 /* ImageDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08E77BC2213E7C95000F93A3 /* ImageDetail.storyboard */; };
 		08E77BC5213E7D15000F93A3 /* ImageDetailNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E77BC4213E7D15000F93A3 /* ImageDetailNavigator.swift */; };
 		08E77BC7213E7D70000F93A3 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E77BC6213E7D70000F93A3 /* ImageDetailViewController.swift */; };
@@ -146,6 +154,14 @@
 		08C1F213213E25E9005704D2 /* ListImageNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListImageNavigator.swift; sourceTree = "<group>"; };
 		08C1F215213E28C5005704D2 /* ListImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListImageViewModel.swift; sourceTree = "<group>"; };
 		08C1F217213E28E4005704D2 /* ListImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListImageViewController.swift; sourceTree = "<group>"; };
+		08DA31542140BF7A00DE8E3B /* EditImage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditImage.storyboard; sourceTree = "<group>"; };
+		08DA31572140C12B00DE8E3B /* EditView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditView.xib; sourceTree = "<group>"; };
+		08DA315A2140C19700DE8E3B /* EditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCell.swift; sourceTree = "<group>"; };
+		08DA315B2140C19700DE8E3B /* EditCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCell.xib; sourceTree = "<group>"; };
+		08DA315E2140C25A00DE8E3B /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		08DA31602140C5EE00DE8E3B /* EditImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditImageViewController.swift; sourceTree = "<group>"; };
+		08DA31622140C9FA00DE8E3B /* EditImageNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditImageNavigator.swift; sourceTree = "<group>"; };
+		08DA31642140CAE800DE8E3B /* EditImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditImageViewModel.swift; sourceTree = "<group>"; };
 		08E77BC2213E7C95000F93A3 /* ImageDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImageDetail.storyboard; sourceTree = "<group>"; };
 		08E77BC4213E7D15000F93A3 /* ImageDetailNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailNavigator.swift; sourceTree = "<group>"; };
 		08E77BC6213E7D70000F93A3 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
@@ -417,6 +433,37 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		08DA31532140BF6300DE8E3B /* Edit Image */ = {
+			isa = PBXGroup;
+			children = (
+				08DA31592140C17600DE8E3B /* Cell */,
+				08DA31562140C11000DE8E3B /* View */,
+				08DA31542140BF7A00DE8E3B /* EditImage.storyboard */,
+				08DA31602140C5EE00DE8E3B /* EditImageViewController.swift */,
+				08DA31642140CAE800DE8E3B /* EditImageViewModel.swift */,
+				08DA31622140C9FA00DE8E3B /* EditImageNavigator.swift */,
+			);
+			path = "Edit Image";
+			sourceTree = "<group>";
+		};
+		08DA31562140C11000DE8E3B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				08DA31572140C12B00DE8E3B /* EditView.xib */,
+				08DA315E2140C25A00DE8E3B /* EditView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		08DA31592140C17600DE8E3B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				08DA315A2140C19700DE8E3B /* EditCell.swift */,
+				08DA315B2140C19700DE8E3B /* EditCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		08E77BC1213E7C7E000F93A3 /* ImageDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -468,6 +515,7 @@
 		1B757C26213643460007B882 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				08DA31532140BF6300DE8E3B /* Edit Image */,
 				1B505031213F77810014C6A5 /* CollectionImages */,
 				08E77BC1213E7C7E000F93A3 /* ImageDetail */,
 				08C1F20B213E202D005704D2 /* List Image */,
@@ -585,9 +633,12 @@
 				08787A9C2134DC3200569477 /* LaunchScreen.storyboard in Resources */,
 				1B757C302136454E0007B882 /* Home.storyboard in Resources */,
 				08C1F20D213E2052005704D2 /* ListImage.storyboard in Resources */,
+				08DA315D2140C19700DE8E3B /* EditCell.xib in Resources */,
+				08DA31582140C12B00DE8E3B /* EditView.xib in Resources */,
 				08787A992134DC3200569477 /* Assets.xcassets in Resources */,
 				1B757C37213645A00007B882 /* ImageCollectionCell.xib in Resources */,
 				08787A972134DC3100569477 /* Main.storyboard in Resources */,
+				08DA31552140BF7A00DE8E3B /* EditImage.storyboard in Resources */,
 				1B757C2C213643CA0007B882 /* Intro.storyboard in Resources */,
 				08E77BC3213E7C95000F93A3 /* ImageDetail.storyboard in Resources */,
 				08072AA02137817D0020F80E /* Library.storyboard in Resources */,
@@ -707,10 +758,12 @@
 				1B757C4521366E400007B882 /* ImageRepository.swift in Sources */,
 				08F6EE8721363DBC00F895B6 /* CollectionResponse.swift in Sources */,
 				08F6EE8521363CF000F895B6 /* CollectionResquest.swift in Sources */,
+				08DA31632140C9FA00DE8E3B /* EditImageNavigator.swift in Sources */,
 				08C1F216213E28C5005704D2 /* ListImageViewModel.swift in Sources */,
 				1B757C4B21368AA50007B882 /* HomeViewModel.swift in Sources */,
 				1B757C3C213645D00007B882 /* ImageTableCell.swift in Sources */,
 				08787A922134DC3100569477 /* AppDelegate.swift in Sources */,
+				08DA31652140CAE800DE8E3B /* EditImageViewModel.swift in Sources */,
 				1B757C2D213643CA0007B882 /* IntroViewController.swift in Sources */,
 				0851BB992138D5630059C43F /* LibraryUseCase.swift in Sources */,
 				08787ABC2134F24000569477 /* ViewModelType+Loadmore.swift in Sources */,
@@ -720,17 +773,20 @@
 				08787ACF21352BF000569477 /* BaseError.swift in Sources */,
 				1B50503B213F91290014C6A5 /* CollectionImagesNavigator.swift in Sources */,
 				0851BB972138D2400059C43F /* LibraryRepository.swift in Sources */,
+				08DA315F2140C25A00DE8E3B /* EditView.swift in Sources */,
 				1BD4A3F22137915C0022643F /* HomeNavigator.swift in Sources */,
 				1B505037213F7A090014C6A5 /* CollectionImagesUseCase.swift in Sources */,
 				08C1F218213E28E5005704D2 /* ListImageViewController.swift in Sources */,
 				08787AC72135286200569477 /* Photo.swift in Sources */,
 				1B505039213F7C680014C6A5 /* CollectionImagesViewModel.swift in Sources */,
 				08787AF921352D0A00569477 /* PhotoRequest.swift in Sources */,
+				08DA315C2140C19700DE8E3B /* EditCell.swift in Sources */,
 				08787AAB2134F13500569477 /* ErrorTracker.swift in Sources */,
 				08787AF721352C3400569477 /* HTTPStatusCode.swift in Sources */,
 				08787B03213530B700569477 /* APIService.swift in Sources */,
 				08787ACE21352BF000569477 /* ErrorResponse.swift in Sources */,
 				08787AAE2134F13500569477 /* UIViewController+Rx.swift in Sources */,
+				08DA31612140C5EE00DE8E3B /* EditImageViewController.swift in Sources */,
 				08787ABD2134F24000569477 /* LoadMoreTableView.swift in Sources */,
 				08F6EE8321363CA900F895B6 /* SearchResponse.swift in Sources */,
 				08787ABE2134F24000569477 /* RefreshTableView.swift in Sources */,
@@ -885,14 +941,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = VG5JZ5RSZ7;
 				INFOPLIST_FILE = MyEditor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = shin.MyEditor;
+				PRODUCT_BUNDLE_IDENTIFIER = c.MyEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -905,14 +961,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = VG5JZ5RSZ7;
 				INFOPLIST_FILE = MyEditor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = shin.MyEditor;
+				PRODUCT_BUNDLE_IDENTIFIER = c.MyEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

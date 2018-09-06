@@ -16,7 +16,7 @@ protocol LibraryRepositoryType {
 
 final class LibraryRepository: LibraryRepositoryType {
     private struct Constant {
-        static let defaultSize = 100
+        static let defaultSize = 200
     }
     
     func getListAlbum() -> Observable<[Album]> {
@@ -38,18 +38,21 @@ final class LibraryRepository: LibraryRepositoryType {
                     PHImageManager.default()
                         .requestImage(for: assets[assets.count - 1],
                                       targetSize: CGSize(width: Constant.defaultSize, height: Constant.defaultSize),
-                                      contentMode: PHImageContentMode.default,
+                                      contentMode: PHImageContentMode.aspectFit,
                                       options: nil,
                                       resultHandler: { (result, info) in
-                        guard let image = result else {
-                            return
-                        }
-                        let newAlbum = Album(name: album.localizedTitle!, count: assets.count, collection: album, latestImage: image)
-                        albums.append(newAlbum)
+                                        if let image = result,
+                                            let info = info,
+                                            let key = info["PHImageResultIsDegradedKey"] as? Int,
+                                            let title = album.localizedTitle,
+                                            key == 0 {
+                                            let newAlbum = Album(name: title, count: assets.count, collection: album, latestImage: image)
+                                            albums.append(newAlbum)
+                                            observer.onNext(albums)
+                                        }
                     })
                 }
             }
-            observer.onNext(albums)
             return Disposables.create()
         }
     }
