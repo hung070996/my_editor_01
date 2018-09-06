@@ -23,6 +23,10 @@ class HomeViewController: UIViewController, BindableType {
         configView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+    }
+    
     func configView() {
         photosTableView.rx
             .setDelegate(self)
@@ -109,6 +113,12 @@ class HomeViewController: UIViewController, BindableType {
             .disposed(by: rx.disposeBag)
         output.loadingMoreCollectionView
             .drive(exploreCollectionView.loadingMore)
+            .disposed(by: rx.disposeBag)
+        output.selectedPhoto
+            .drive()
+            .disposed(by: rx.disposeBag)
+        output.selectedCollection
+            .drive()
             .disposed(by: rx.disposeBag)
     }
 }

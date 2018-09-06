@@ -15,7 +15,7 @@ class PhotoInCollectionRequest: BaseRequest {
             "page": page,
             "per_page": perPage
         ]
-        let url = URLs.collectionsUrl + String(collection.id) + "/photos"
+        let url = URLs.collectionsUrl + "/" + String(collection.id) + "/photos"
         super.init(url: url, requestType: .get, body: body)
     }
 }

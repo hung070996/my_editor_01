@@ -15,6 +15,7 @@ struct CollectionImagesViewModel: ViewModelType {
         let reloadTrigger: Driver<Void>
         let loadMoreTrigger: Driver<Void>
         let selectPhotoTrigger: Driver<IndexPath>
+        let toHomeScreenTrigger: Driver<Void>
     }
     
     struct Output {
@@ -26,10 +27,14 @@ struct CollectionImagesViewModel: ViewModelType {
         let photos: Driver<[Photo]>
         let selectedPhoto: Driver<Void>
         let isEmptyData: Driver<Bool>
+        let collection: Driver<Collection>
+        let ratios: BehaviorRelay<[CGFloat]>
     }
     
+    let navigator: CollectionImagesNavigatorType
     let useCase: CollectionImagesUseCaseType
     let collection: Collection
+    let disposeBag = DisposeBag()
     
     func transform(_ input: Input) -> Output {
         let loadMoreOutput = setupLoadMorePagingWithParam(
@@ -53,13 +58,32 @@ struct CollectionImagesViewModel: ViewModelType {
                 return photos[indexPath.row]
             }
             .do(onNext: { photos in
-                //MARK: NEXT_TASK
+                // TODO: - NEXT_TASK
                 print("For next task - navigator")
             })
             .mapToVoid()
+        let collectionObservable = Observable<Collection>.create { (observer) in
+            observer.onNext(self.collection)
+            observer.onCompleted()
+            return Disposables.create()
+        }.asDriverOnErrorJustComplete()
         let isEmptyData = Driver.combineLatest(photos, loading)
             .filter { !$0.1 }
             .map { $0.0.isEmpty }
+        input.toHomeScreenTrigger.asObservable().subscribe(onNext: {
+            self.navigator.toHomeScreen()
+            })
+            .disposed(by: disposeBag)
+        var arrRatio = [CGFloat]()
+        let observableRelay = BehaviorRelay<[CGFloat]>(value: arrRatio)
+        photos.asObservable().subscribe(onNext: { photos in
+                arrRatio.removeAll()
+                for photo in photos {
+                    arrRatio.append(CGFloat(photo.width) / CGFloat(photo.height))
+                }
+                observableRelay.accept(arrRatio)
+            })
+            .disposed(by: disposeBag)
         return Output(
             error: loadError,
             loading: loading,
@@ -68,7 +92,9 @@ struct CollectionImagesViewModel: ViewModelType {
             fetchItems: fetchItem,
             photos: photos,
             selectedPhoto: selectedPhoto,
-            isEmptyData: isEmptyData
+            isEmptyData: isEmptyData,
+            collection: collectionObservable,
+            ratios: observableRelay
         )
     }
 }

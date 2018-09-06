@@ -11,15 +11,24 @@ import UIKit
 protocol CollectionImagesNavigatorType {
     func toHomeScreen()
     func toImageDetailScreen()
+    func toCollectionImagesScreen(collection: Collection)
 }
 
 struct CollectionImagesNavigator: CollectionImagesNavigatorType {
     unowned let navigationViewController: UINavigationController
     
+    func toCollectionImagesScreen(collection: Collection) {
+        let vc = CollectionImageViewController.instantiate()
+        let model = CollectionImagesViewModel(navigator: self, useCase: CollectionImagesUseCase(), collection: collection)
+        vc.bindViewModel(to: model)
+        self.navigationViewController.pushViewController(vc, animated: true)
+    }
+    
     func toHomeScreen() {
+        
         self.navigationViewController.popViewController(animated: true)
     }
-    //MARK: NEXT_TASK
+    // TODO: - NEXT_TASK
     func toImageDetailScreen() {
         print("for next task")
     }

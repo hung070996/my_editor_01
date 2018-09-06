@@ -36,6 +36,8 @@ struct HomeViewModel: ViewModelType {
         let collections: Driver<[Collection]>
         let isEmptyPhotoData: Driver<Bool>
         let isEmptyCollectionData: Driver<Bool>
+        let selectedCollection: Driver<Void>
+        let selectedPhoto: Driver<Void>
     }
     
     let navigator: HomeNavigatorType
@@ -64,6 +66,23 @@ struct HomeViewModel: ViewModelType {
         let isEmptyCollections = Driver.combineLatest(collections, loadingCollection)
             .filter { !$0.1 }
             .map { $0.0.isEmpty }
+        let selectedCollection = input.selectCollectionViewTrigger
+            .withLatestFrom(collections) { indexPath, collections in
+                return collections[indexPath.row]
+            }
+            .do(onNext: { collection in
+                self.navigator.toCollectionScreen(collection: collection)
+            })
+            .mapToVoid()
+        let selectedPhoto = input.selectTableViewTrigger
+            .withLatestFrom(photos) { indexPath, photos in
+                return photos[indexPath.row]
+            }.do(onNext: { photo in
+                // TODO: - NEXT_TASK
+                print(photo)
+            })
+            .mapToVoid()
+        
         return Output(
             errorTableView: loadErrorTable,
             errorCollectionView: loadErrorCollection,
@@ -78,7 +97,9 @@ struct HomeViewModel: ViewModelType {
             photos: photos,
             collections: collections,
             isEmptyPhotoData: isEmptyPhotos,
-            isEmptyCollectionData: isEmptyCollections
+            isEmptyCollectionData: isEmptyCollections,
+            selectedCollection: selectedCollection,
+            selectedPhoto: selectedPhoto
         )
     }
 }

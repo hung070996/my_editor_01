@@ -28,6 +28,7 @@ struct AppNavigator: AppNavigatorType {
         //Tab Home
         let homeViewController = HomeViewController.instantiate()
         let homeNavigationController = UINavigationController(rootViewController: homeViewController)
+        homeNavigationController.navigationBar.tintColor = .black
         homeNavigationController.isNavigationBarHidden = true
         let homeNavigator = HomeNavigator(navigationViewController: homeNavigationController)
         let homeViewModel = HomeViewModel(navigator: homeNavigator, useCase: HomeUseCase())
