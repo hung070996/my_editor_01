@@ -16,17 +16,26 @@ class ImageDetailViewController: UIViewController, BindableType {
     @IBOutlet private var imageView: UIImageView!
     
     var viewModel: ImageDetailViewModel!
+    var editItem: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+    }
+    
+    private func setupView() {
+        editItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: nil)
+        self.navigationItem.rightBarButtonItem = editItem
     }
     
     func bindViewModel() {
-        let input = ImageDetailViewModel.Input(loadTrigger: Driver.just(()))
+        let input = ImageDetailViewModel.Input(loadTrigger: Driver.just(()),
+                                               clickEditTrigger: editItem.rx.tap.asDriver())
         let output = viewModel.transform(input)
         output.image
             .drive(imageView.rx.image)
             .disposed(by: rx.disposeBag)
+        output.clickedEdit.drive().disposed(by: rx.disposeBag)
     }
 }
 

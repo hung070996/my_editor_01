@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Edit Image View Controller-->
+        <scene sceneID="V0C-y9-dik">
+            <objects>
+                <viewController storyboardIdentifier="EditImageViewController" id="20c-Kr-Rvl" customClass="EditImageViewController" customModule="MyEditor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P6G-0V-Y3J">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gdl-9f-g8u">
+                                <rect key="frame" x="0.0" y="20" width="375" height="400"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WZg-3a-06v">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPc-32-5Dy">
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="Bộ lọc">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgY-Ac-RwQ">
+                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="Chỉnh sửa">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="soT-dN-Zsj" customClass="EditView" customModule="MyEditor" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="420" width="375" height="197"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="D9A-Rx-wB5" firstAttribute="trailing" secondItem="Gdl-9f-g8u" secondAttribute="trailing" id="5h7-iQ-oFM"/>
+                            <constraint firstItem="WZg-3a-06v" firstAttribute="height" secondItem="P6G-0V-Y3J" secondAttribute="height" multiplier="50/667" id="CBq-Bi-aar"/>
+                            <constraint firstItem="D9A-Rx-wB5" firstAttribute="bottom" secondItem="WZg-3a-06v" secondAttribute="bottom" id="H39-VZ-kPs"/>
+                            <constraint firstItem="WZg-3a-06v" firstAttribute="top" secondItem="soT-dN-Zsj" secondAttribute="bottom" id="HNU-18-DFV"/>
+                            <constraint firstItem="D9A-Rx-wB5" firstAttribute="trailing" secondItem="soT-dN-Zsj" secondAttribute="trailing" id="LnR-CK-7BH"/>
+                            <constraint firstItem="soT-dN-Zsj" firstAttribute="leading" secondItem="D9A-Rx-wB5" secondAttribute="leading" id="SCE-2C-q13"/>
+                            <constraint firstItem="Gdl-9f-g8u" firstAttribute="top" secondItem="D9A-Rx-wB5" secondAttribute="top" id="Uau-WG-ZwH"/>
+                            <constraint firstItem="WZg-3a-06v" firstAttribute="leading" secondItem="D9A-Rx-wB5" secondAttribute="leading" id="W7H-9l-1hy"/>
+                            <constraint firstItem="D9A-Rx-wB5" firstAttribute="trailing" secondItem="WZg-3a-06v" secondAttribute="trailing" id="fQR-mn-c0X"/>
+                            <constraint firstItem="Gdl-9f-g8u" firstAttribute="leading" secondItem="D9A-Rx-wB5" secondAttribute="leading" id="gW2-eK-rwn"/>
+                            <constraint firstItem="Gdl-9f-g8u" firstAttribute="height" secondItem="P6G-0V-Y3J" secondAttribute="height" multiplier="3/5" id="oUx-QI-SjN"/>
+                            <constraint firstItem="soT-dN-Zsj" firstAttribute="top" secondItem="Gdl-9f-g8u" secondAttribute="bottom" id="zGF-ms-SdI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="D9A-Rx-wB5"/>
+                    </view>
+                    <connections>
+                        <outlet property="editView" destination="soT-dN-Zsj" id="cVN-wL-2sj"/>
+                        <outlet property="imageView" destination="Gdl-9f-g8u" id="wds-rp-B2v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xRT-ts-WfN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="247" y="25"/>
+        </scene>
+    </scenes>
+</document>
