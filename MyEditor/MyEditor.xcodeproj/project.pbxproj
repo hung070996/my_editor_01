@@ -76,6 +76,8 @@
 		08F6EE8A21364A1B00F895B6 /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F6EE8921364A1B00F895B6 /* DownloadService.swift */; };
 		08F6EE8C2136599F00F895B6 /* PHPhotoLibrary+SaveImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F6EE8B2136599F00F895B6 /* PHPhotoLibrary+SaveImage.swift */; };
 		08F6EE8E2136755000F895B6 /* PhotoInCollectionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F6EE8D2136755000F895B6 /* PhotoInCollectionRequest.swift */; };
+		1B082292214259A800C6EFF0 /* SearchHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B082291214259A800C6EFF0 /* SearchHeader.swift */; };
+		1B08229421425AA000C6EFF0 /* SearchHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B08229321425AA000C6EFF0 /* SearchHeader.xib */; };
 		1B27E66C213530920014AC4A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27E66B213530920014AC4A /* Utils.swift */; };
 		1B505033213F77BB0014C6A5 /* CollectionImages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B505032213F77BB0014C6A5 /* CollectionImages.storyboard */; };
 		1B505035213F77EC0014C6A5 /* CollectionImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B505034213F77EC0014C6A5 /* CollectionImagesViewController.swift */; };
@@ -180,6 +182,8 @@
 		08F6EE8921364A1B00F895B6 /* DownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadService.swift; sourceTree = "<group>"; };
 		08F6EE8B2136599F00F895B6 /* PHPhotoLibrary+SaveImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHPhotoLibrary+SaveImage.swift"; sourceTree = "<group>"; };
 		08F6EE8D2136755000F895B6 /* PhotoInCollectionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInCollectionRequest.swift; sourceTree = "<group>"; };
+		1B082291214259A800C6EFF0 /* SearchHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeader.swift; sourceTree = "<group>"; };
+		1B08229321425AA000C6EFF0 /* SearchHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHeader.xib; sourceTree = "<group>"; };
 		1B27E66B213530920014AC4A /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		1B505032213F77BB0014C6A5 /* CollectionImages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CollectionImages.storyboard; sourceTree = "<group>"; };
 		1B505034213F77EC0014C6A5 /* CollectionImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionImagesViewController.swift; sourceTree = "<group>"; };
@@ -603,6 +607,8 @@
 			children = (
 				1BF894122140E2FE00EC6C3D /* SearchCell.swift */,
 				1BF894132140E2FE00EC6C3D /* SearchCell.xib */,
+				1B082291214259A800C6EFF0 /* SearchHeader.swift */,
+				1B08229321425AA000C6EFF0 /* SearchHeader.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -669,6 +675,7 @@
 			files = (
 				1BF894152140E2FE00EC6C3D /* SearchCell.xib in Resources */,
 				08787A9C2134DC3200569477 /* LaunchScreen.storyboard in Resources */,
+				1B08229421425AA000C6EFF0 /* SearchHeader.xib in Resources */,
 				1B757C302136454E0007B882 /* Home.storyboard in Resources */,
 				08C1F20D213E2052005704D2 /* ListImage.storyboard in Resources */,
 				08DA315D2140C19700DE8E3B /* EditCell.xib in Resources */,
@@ -789,6 +796,7 @@
 				08ADB361213E63F6005A8E60 /* ListImageUseCase.swift in Sources */,
 				08F6EE8E2136755000F895B6 /* PhotoInCollectionRequest.swift in Sources */,
 				08787AAF2134F13500569477 /* Observable+.swift in Sources */,
+				1B082292214259A800C6EFF0 /* SearchHeader.swift in Sources */,
 				0851BB9D2138D6DD0059C43F /* LibraryNavigator.swift in Sources */,
 				1B757C4921367DB10007B882 /* HomeUseCase.swift in Sources */,
 				08787AC02134F24000569477 /* PagingInfo.swift in Sources */,
@@ -994,7 +1002,10 @@
 				DEVELOPMENT_TEAM = VG5JZ5RSZ7;
 				INFOPLIST_FILE = MyEditor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = c.MyEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1011,7 +1022,10 @@
 				DEVELOPMENT_TEAM = VG5JZ5RSZ7;
 				INFOPLIST_FILE = MyEditor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = c.MyEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

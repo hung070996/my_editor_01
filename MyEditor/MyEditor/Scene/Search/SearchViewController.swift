@@ -35,7 +35,8 @@ class SearchViewController: UIViewController, BindableType {
             return cell
         },
         titleForHeaderInSection: { dataSource, sectionIndex in
-            return dataSource[sectionIndex].model
+//            return dataSource[sectionIndex].model
+            return ""
         }
     )
     
@@ -47,6 +48,7 @@ class SearchViewController: UIViewController, BindableType {
             $0.estimatedRowHeight = 80
             $0.rowHeight = UITableViewAutomaticDimension
             $0.register(cellType: SearchCell.self)
+            $0.register(headerFooterViewType: SearchHeader.self)
             $0.separatorStyle = .none
         }
         querryObservable = searchBar.rx.textDidEndEditing.asObservable()
@@ -91,6 +93,15 @@ extension SearchViewController: StoryboardSceneBased {
 }
 
 extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(SearchHeader.self)
+        header?.sectionLabel.text = dataSource.sectionModels[section].model
+        return header
+    }
 }
 
 extension SearchViewController: UISearchBarDelegate {

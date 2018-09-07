@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SearchHeader" customModule="MyEditor" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RMV-LL-Sxi">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsX-Ia-2Os">
+                            <rect key="frame" x="15" y="15" width="53" height="24"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.8592670751" green="0.8592670751" blue="0.8592670751" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="KsX-Ia-2Os" firstAttribute="centerY" secondItem="RMV-LL-Sxi" secondAttribute="centerY" id="lrN-k2-rZD"/>
+                        <constraint firstItem="KsX-Ia-2Os" firstAttribute="leading" secondItem="RMV-LL-Sxi" secondAttribute="leading" constant="15" id="z1t-2L-l4K"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.78808718919999998" green="0.78791451450000005" blue="0.80853986739999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="RMV-LL-Sxi" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="2bp-re-QgJ"/>
+                <constraint firstItem="RMV-LL-Sxi" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="YT0-jo-Ewj"/>
+                <constraint firstItem="RMV-LL-Sxi" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="ack-r8-6i9"/>
+                <constraint firstItem="RMV-LL-Sxi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="f4H-wM-fcj"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="sectionLabel" destination="KsX-Ia-2Os" id="BOp-UL-Haz"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="-253"/>
+        </view>
+    </objects>
+</document>

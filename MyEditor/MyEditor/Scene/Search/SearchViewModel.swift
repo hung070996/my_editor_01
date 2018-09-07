@@ -28,6 +28,7 @@ struct SearchViewModel: ViewModelType {
     var navigator: SearchNavigatorType
     var useCase: SearchUseCase
     let disposeBag = DisposeBag()
+    fileprivate let maxCountOfHistories = 5
     //arrTrending is a constant array
     let arrTrending = ["krishna", "girls", "4k wallpaper", "mehndi", "fall"]
     struct SuggestSection {
@@ -44,10 +45,14 @@ struct SearchViewModel: ViewModelType {
                 self.navigator.toCollectionImagesScreen(collection: Collection())
             })
             .disposed(by: disposeBag)
-        var arrHistory = [String]()
+        var arrHistory = readHistorySearch()
         let driverRelay = BehaviorRelay<[String]>(value: arrHistory)
         input.searchTrigger.drive(onNext: { text in
-            arrHistory.append(text)
+            arrHistory.insert(text, at: 0)
+            if arrHistory.count >= self.maxCountOfHistories {
+                arrHistory.remove(at: self.maxCountOfHistories - 1)
+            }
+            saveHistorySearch(histories: arrHistory)
             driverRelay.accept(arrHistory)
         })
         .disposed(by: disposeBag)
