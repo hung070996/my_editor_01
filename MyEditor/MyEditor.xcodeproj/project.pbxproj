@@ -20,6 +20,7 @@
 		0851BB992138D5630059C43F /* LibraryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0851BB982138D5630059C43F /* LibraryUseCase.swift */; };
 		0851BB9B2138D6120059C43F /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0851BB9A2138D6120059C43F /* LibraryViewModel.swift */; };
 		0851BB9D2138D6DD0059C43F /* LibraryNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0851BB9C2138D6DD0059C43F /* LibraryNavigator.swift */; };
+		086774F62146075D0062F965 /* EditImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086774F52146075D0062F965 /* EditImageUseCase.swift */; };
 		08787A922134DC3100569477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787A912134DC3100569477 /* AppDelegate.swift */; };
 		08787A972134DC3100569477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08787A952134DC3100569477 /* Main.storyboard */; };
 		08787A992134DC3200569477 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08787A982134DC3200569477 /* Assets.xcassets */; };
@@ -115,6 +116,7 @@
 		0851BB982138D5630059C43F /* LibraryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryUseCase.swift; sourceTree = "<group>"; };
 		0851BB9A2138D6120059C43F /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
 		0851BB9C2138D6DD0059C43F /* LibraryNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryNavigator.swift; sourceTree = "<group>"; };
+		086774F52146075D0062F965 /* EditImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditImageUseCase.swift; sourceTree = "<group>"; };
 		08787A8E2134DC3100569477 /* MyEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08787A912134DC3100569477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08787A962134DC3100569477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 				08DA31602140C5EE00DE8E3B /* EditImageViewController.swift */,
 				08DA31642140CAE800DE8E3B /* EditImageViewModel.swift */,
 				08DA31622140C9FA00DE8E3B /* EditImageNavigator.swift */,
+				086774F52146075D0062F965 /* EditImageUseCase.swift */,
 			);
 			path = "Edit Image";
 			sourceTree = "<group>";
@@ -776,6 +779,7 @@
 				08DA315F2140C25A00DE8E3B /* EditView.swift in Sources */,
 				1BD4A3F22137915C0022643F /* HomeNavigator.swift in Sources */,
 				1B505037213F7A090014C6A5 /* CollectionImagesUseCase.swift in Sources */,
+				086774F62146075D0062F965 /* EditImageUseCase.swift in Sources */,
 				08C1F218213E28E5005704D2 /* ListImageViewController.swift in Sources */,
 				08787AC72135286200569477 /* Photo.swift in Sources */,
 				1B505039213F7C680014C6A5 /* CollectionImagesViewModel.swift in Sources */,

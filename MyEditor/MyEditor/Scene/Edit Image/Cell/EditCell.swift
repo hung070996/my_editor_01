@@ -15,6 +15,11 @@ class EditCell: UICollectionViewCell, NibReusable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+    }
+    
+    func setContentForCell(title: String, image: String) {
+        label.text = title
+        let image = UIImage(named: image)
+        imageView.image = image
     }
 }

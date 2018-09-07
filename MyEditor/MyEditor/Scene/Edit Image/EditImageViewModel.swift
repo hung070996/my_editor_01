@@ -12,21 +12,50 @@ import RxCocoa
 import Photos
 
 struct EditImageViewModel: ViewModelType {
+    private struct Constant {
+        static let typeEdit = ["Crop"]
+        static let imageEdit = ["Intro_Icon_View"]
+    }
+    
     struct Input {
         let loadTrigger: Driver<Void>
+        let clickSaveTrigger: Driver<Void>
+        let latestImage: Driver<UIImage>
+        let clickDoneTrigger: Driver<Void>
     }
     
     struct Output {
         let image: Driver<UIImage>
+        let clickedSave: Driver<Bool>
+        let clickedDone: Driver<Void>
+        let listEdit: Driver<[(String, String)]>
     }
     
     let image: UIImage
+    let useCase: EditImageUseCaseType
     
     func transform(_ input: EditImageViewModel.Input) -> EditImageViewModel.Output {
         let image = input.loadTrigger
             .map {  _ in self.image }
+        let clickedSave = input.clickSaveTrigger
+            .withLatestFrom(input.latestImage) { _, image in
+                return image
+            }
+            .flatMapLatest { image in
+                self.useCase.saveImage(image: image)
+                    .asDriverOnErrorJustComplete()
+            }
+        let clickedDone = input.clickDoneTrigger.map { }
+        var itemEdit = [(String, String)]()
+        for i in 0 ..< Constant.typeEdit.count {
+            itemEdit.append((Constant.typeEdit[i], Constant.imageEdit[i]))
+        }
+        let listEdit = Observable.just(itemEdit).asDriverOnErrorJustComplete()
         return Output(
-            image: image
+            image: image,
+            clickedSave: clickedSave.asDriver(),
+            clickedDone: clickedDone,
+            listEdit: listEdit
         )
     }
 }

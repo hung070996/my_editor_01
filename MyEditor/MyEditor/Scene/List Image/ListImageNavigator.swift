@@ -21,7 +21,7 @@ struct ListImageNavigator: ListImageNavigatorType {
         let listImageViewController = ListImageViewController.instantiate()
         let listImageViewModel = ListImageViewModel(album: album,
                                                     useCase: ListImageUseCase(),
-                                                    navigator: ListImageNavigator(navigationController: navigationController))
+                                                    navigator: self)
         listImageViewController.bindViewModel(to: listImageViewModel)
         navigationController.pushViewController(listImageViewController, animated: true)
     }

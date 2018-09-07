@@ -13,6 +13,7 @@ import RxCocoa
 
 class LibraryViewController: UIViewController, BindableType {
     var viewModel: LibraryViewModel!
+    var loadTrigger = PublishSubject<()>()
     
     @IBOutlet private var tableView: UITableView!
     
@@ -21,13 +22,18 @@ class LibraryViewController: UIViewController, BindableType {
         setupTableview()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadTrigger.onNext(())
+    }
+    
     func setupTableview() {
         tableView.register(cellType: ListAlbumCell.self)
     }
     
     func bindViewModel() {
         let input = LibraryViewModel.Input(
-            loadTrigger: Driver.just(()),
+            loadTrigger: loadTrigger.asObserver().asDriverOnErrorJustComplete(),
             selectAlbumTrigger: tableView.rx.itemSelected.asDriver()
         )
         let output = viewModel.transform(input)

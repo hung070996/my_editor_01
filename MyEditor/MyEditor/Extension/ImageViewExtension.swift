@@ -50,4 +50,25 @@ extension UIImage {
         let imageRatio = CGFloat(self.size.width / self.size.height)
         return imageRatio
     }
+    
+    func crop(rect: CGRect) -> UIImage {
+        var rect = rect
+        rect.origin.x *= self.scale
+        rect.origin.y *= self.scale
+        rect.size.width *= self.scale
+        rect.size.height *= self.scale
+        guard let cgImage = self.cgImage, let imageRef = cgImage.cropping(to: rect) else {
+            return UIImage()
+        }
+        let image = UIImage(cgImage: imageRef, scale: self.scale, orientation: self.imageOrientation)
+        return image
+    }
+    
+    func resize(scaledTo newSize: CGSize) -> UIImage? {
+        UIGraphicsBeginImageContext(newSize)
+        self.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        let newImage: UIImage? = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
 }
