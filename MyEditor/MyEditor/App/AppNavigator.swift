@@ -37,14 +37,17 @@ struct AppNavigator: AppNavigatorType {
         //Tab Library
         let libraryViewController = LibraryViewController.instantiate()
         let libraryNavigationController = UINavigationController(rootViewController: libraryViewController)
+        libraryNavigationController.navigationBar.tintColor = .black
         libraryNavigationController.tabBarItem = UITabBarItem(title: Constant.library, image: UIImage(named: Constant.iconLibrary), selectedImage: UIImage(named: Constant.iconLibrary))
         let libraryNavigator = LibraryNavigator(navigationController: libraryNavigationController)
         let libraryUseCase = LibraryUseCase()
         let libraryViewModel = LibraryViewModel(useCase: libraryUseCase, navigator: libraryNavigator)
         libraryViewController.bindViewModel(to: libraryViewModel)
+        //Tabbar
         let tabBarController = UITabBarController()
         tabBarController.addChildViewController(homeNavigationController)
         tabBarController.addChildViewController(libraryNavigationController)
+        tabBarController.tabBar.tintColor = .black
         window.rootViewController = tabBarController
     }
 }

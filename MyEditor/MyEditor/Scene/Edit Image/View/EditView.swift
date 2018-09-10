@@ -21,4 +21,9 @@ class EditView: UIView, NibOwnerLoadable {
     func getCollection() -> UICollectionView {
         return collectionView
     }
+    
+    func configCollectionView(viewController: UIViewController) {
+        collectionView.delegate = viewController as? UICollectionViewDelegate
+        collectionView.register(cellType: EditCell.self)
+    }
 }

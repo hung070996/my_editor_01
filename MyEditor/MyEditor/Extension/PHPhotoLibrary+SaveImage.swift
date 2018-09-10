@@ -13,16 +13,22 @@ import RxSwift
 import NSObject_Rx
 
 extension PHPhotoLibrary {
-    func findAlbum(albumName: String) -> Observable<(Bool, PHAssetCollection?)> {
+    func findAlbum(albumName: String) -> Observable<PHAssetCollection> {
         return Observable.create({ subcriber in
             let fetchOptions = PHFetchOptions()
             fetchOptions.predicate = NSPredicate(format: "title = %@", albumName)
             let fetchResult : PHFetchResult = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
             guard let photoAlbum = fetchResult.firstObject else {
-                subcriber.onNext((false, nil))
+                _ = PHPhotoLibrary.shared()
+                    .createAlbum(albumName: albumName)
+                    .subscribe(onNext: { (collection) in
+                    subcriber.onNext(collection)
+                }, onError: { (error) in
+                    subcriber.onError(BaseError.unexpectedError)
+                })
                 return Disposables.create()
             }
-            subcriber.onNext((true, photoAlbum))
+            subcriber.onNext(photoAlbum)
             return Disposables.create()
         })
     }
@@ -55,7 +61,6 @@ extension PHPhotoLibrary {
     
     func saveImage(image: UIImage, album: PHAssetCollection) -> Observable<Bool> {
         return Observable.create({ observer in
-            return Disposables.create()
             var placeholder: PHObjectPlaceholder?
             PHPhotoLibrary.shared().performChanges({
                 let createAssetRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
@@ -65,18 +70,13 @@ extension PHPhotoLibrary {
                 let fastEnumeration = NSArray(array: [photoPlaceholder] as [PHObjectPlaceholder])
                 albumChangeRequest.addAssets(fastEnumeration)
             }, completionHandler: { success, error in
-                guard let placeholder = placeholder else {
+                guard let _ = placeholder else {
                     observer.onError(BaseError.unexpectedError)
                     return
                 }
-                if success {
-                    let assets:PHFetchResult<PHAsset> =  PHAsset.fetchAssets(withLocalIdentifiers: [placeholder.localIdentifier], options: nil)
-                    let asset:PHAsset? = assets.firstObject
-                    observer.onNext(true)
-                } else {
-                    observer.onNext(false)
-                }
+                observer.onNext(success ? true : false)
             })
+            return Disposables.create()
         })
     }
 }
