@@ -29,6 +29,7 @@ struct SearchViewModel: ViewModelType {
         let fetchData: Driver<Void>
         let loadResult: Driver<Void>
         let cancelTriggerResult: Driver<Void>
+        let toCollectionResult: Driver<Void>
     }
     
     let navigator: SearchNavigatorType
@@ -46,17 +47,13 @@ struct SearchViewModel: ViewModelType {
                 arrHistory.accept(histories)
             }
         let toCollectionResult = input.searchTrigger.withLatestFrom(input.keywordTrigger) { _, keyword -> String in
-                self.navigator.toCollectionImagesScreen(collection: Collection())
+                self.navigator.toCollectionImagesScreen(keyword: keyword)
                 return keyword
             }
         let fetchData = toCollectionResult.withLatestFrom(arrHistory.asDriver()) { searchKey, histories in
-                var latestArray = histories
-                latestArray.insert(searchKey, at: 0)
-                if latestArray.count >= ConstantData.maxHistoryDisplay {
-                    latestArray.remove(at: ConstantData.maxHistoryDisplay - 1)
-                }
-                self.useCase.saveHistory(histories: histories)
-                arrHistory.accept(latestArray)
+                let newHistories = self.useCase.updateArrayHistory(histories: histories, searchKey: searchKey, maxHistoryCount: ConstantData.maxHistoryDisplay)
+                self.useCase.saveHistory(histories: newHistories)
+                arrHistory.accept(newHistories)
             }
         let sectioned = arrHistory
             .map { [
@@ -67,11 +64,19 @@ struct SearchViewModel: ViewModelType {
         let cancelResult = input.cancelTrigger.do(onNext: {
                 self.navigator.toHomeScreen()
             })
+        let toCollectionScreenResult = input.selectTrigger.withLatestFrom(sectioned) { indexPath, section in
+            let arrKey = section[indexPath.section].productList
+            self.navigator.toCollectionImagesScreen(keyword: arrKey[indexPath.row])
+            let newHistories = self.useCase.updateArrayHistory(histories: section[0].productList, searchKey: arrKey[indexPath.row], maxHistoryCount: ConstantData.maxHistoryDisplay)
+            self.useCase.saveHistory(histories: newHistories)
+            arrHistory.accept(newHistories)
+        }
         return Output(
             sectionedSuggest: sectioned,
             fetchData: fetchData,
             loadResult: loadResult,
-            cancelTriggerResult: cancelResult
+            cancelTriggerResult: cancelResult,
+            toCollectionResult: toCollectionScreenResult
         )
     }
 }

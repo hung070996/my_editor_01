@@ -13,6 +13,7 @@ import RxSwift
 protocol SearchUseCaseType {
     func readHistory() -> [String]
     func saveHistory(histories: [String])
+    func updateArrayHistory(histories: [String], searchKey: String, maxHistoryCount: Int) -> [String]
 }
 
 struct SearchUseCase: SearchUseCaseType {
@@ -22,5 +23,19 @@ struct SearchUseCase: SearchUseCaseType {
     
     func saveHistory(histories: [String]) {
         return saveHistorySearch(histories: histories)
+    }
+    
+    func updateArrayHistory(histories: [String], searchKey: String, maxHistoryCount: Int) -> [String] {
+        var latestArray = histories
+        let index = findIndex(of: searchKey, inArray: histories)
+        if let index = index {
+            latestArray.remove(at: index)
+        } else {
+            if latestArray.count >= maxHistoryCount {
+                latestArray.remove(at: maxHistoryCount - 1)
+            }
+        }
+        latestArray.insert(searchKey, at: 0)
+        return latestArray
     }
 }

@@ -84,7 +84,8 @@ struct HomeViewModel: ViewModelType {
                 print(photo)
             })
             .mapToVoid()
-        let toSearchResult = input.toSearchViewTrigger.do(onNext: { _ in
+        let toSearchResult = input.toSearchViewTrigger
+            .do(onNext: { _ in
                 self.navigator.toSearchScreen()
             })
         
