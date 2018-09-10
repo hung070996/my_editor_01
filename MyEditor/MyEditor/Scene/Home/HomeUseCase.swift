@@ -10,6 +10,7 @@ import RxSwift
 
 protocol HomeUseCaseType {
     func getPhotos() -> Observable<PagingInfo<Photo>>
+    func getRandomPhoto() -> Observable<Photo>
     func getPhotos(page: Int) -> Observable<PagingInfo<Photo>>
     func getCollections() -> Observable<PagingInfo<Collection>>
     func getCollections(page: Int) -> Observable<PagingInfo<Collection>>
@@ -22,6 +23,11 @@ struct HomeUseCase: HomeUseCaseType {
             .map { photos in
                 return PagingInfo(items: photos)
             }
+    }
+    
+    func getRandomPhoto() -> Observable<Photo> {
+        let repository = ImageRepository(api: APIService.share)
+        return repository.getRandomPhoto()
     }
     
     func getPhotos(page: Int) -> Observable<PagingInfo<Photo>> {

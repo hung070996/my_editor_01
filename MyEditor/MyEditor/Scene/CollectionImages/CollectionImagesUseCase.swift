@@ -34,7 +34,7 @@ struct CollectionImagesUseCase: CollectionImagesUseCaseType {
     
     func getPhotosWithSearchKey(querry: String) -> Observable<PagingInfo<Photo>> {
         let repository = ImageRepository(api: APIService.share)
-        return repository.searchPhotos(querry: querry)
+        return repository.searchPhotos(query: querry)
             .map { photos in
                 return PagingInfo(items: photos)
             }
@@ -42,7 +42,7 @@ struct CollectionImagesUseCase: CollectionImagesUseCaseType {
     
     func getPhotosWithSearchKey(querry: String, page: Int) -> Observable<PagingInfo<Photo>> {
         let repository = ImageRepository(api: APIService.share)
-        return repository.searchPhotos(querry: querry, page: page)
+        return repository.searchPhotos(query: querry, page: page)
             .map { photos in
                 return PagingInfo(page: page, items: photos)
             }
