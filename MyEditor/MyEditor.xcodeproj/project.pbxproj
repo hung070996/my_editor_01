@@ -21,6 +21,11 @@
 		0851BB9B2138D6120059C43F /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0851BB9A2138D6120059C43F /* LibraryViewModel.swift */; };
 		0851BB9D2138D6DD0059C43F /* LibraryNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0851BB9C2138D6DD0059C43F /* LibraryNavigator.swift */; };
 		086774F62146075D0062F965 /* EditImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086774F52146075D0062F965 /* EditImageUseCase.swift */; };
+		086774FC21463E550062F965 /* EditType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086774FB21463E550062F965 /* EditType.swift */; };
+		08677500214647BC0062F965 /* DrawView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086774FF214647BC0062F965 /* DrawView.xib */; };
+		0867750221464B000062F965 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0867750121464B000062F965 /* DrawView.swift */; };
+		0867750421465F9A0062F965 /* Button+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0867750321465F9A0062F965 /* Button+.swift */; };
+		08677506214674020062F965 /* ImageDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08677505214674020062F965 /* ImageDetailUseCase.swift */; };
 		08787A922134DC3100569477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787A912134DC3100569477 /* AppDelegate.swift */; };
 		08787A972134DC3100569477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08787A952134DC3100569477 /* Main.storyboard */; };
 		08787A992134DC3200569477 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08787A982134DC3200569477 /* Assets.xcassets */; };
@@ -126,6 +131,11 @@
 		0851BB9A2138D6120059C43F /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
 		0851BB9C2138D6DD0059C43F /* LibraryNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryNavigator.swift; sourceTree = "<group>"; };
 		086774F52146075D0062F965 /* EditImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditImageUseCase.swift; sourceTree = "<group>"; };
+		086774FB21463E550062F965 /* EditType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditType.swift; sourceTree = "<group>"; };
+		086774FF214647BC0062F965 /* DrawView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawView.xib; sourceTree = "<group>"; };
+		0867750121464B000062F965 /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
+		0867750321465F9A0062F965 /* Button+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+.swift"; sourceTree = "<group>"; };
+		08677505214674020062F965 /* ImageDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailUseCase.swift; sourceTree = "<group>"; };
 		08787A8E2134DC3100569477 /* MyEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08787A912134DC3100569477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08787A962134DC3100569477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -273,6 +283,24 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		086774FD2146478E0062F965 /* EditView */ = {
+			isa = PBXGroup;
+			children = (
+				08DA31572140C12B00DE8E3B /* EditView.xib */,
+				08DA315E2140C25A00DE8E3B /* EditView.swift */,
+			);
+			path = EditView;
+			sourceTree = "<group>";
+		};
+		086774FE2146479C0062F965 /* DrawView */ = {
+			isa = PBXGroup;
+			children = (
+				086774FF214647BC0062F965 /* DrawView.xib */,
+				0867750121464B000062F965 /* DrawView.swift */,
+			);
+			path = DrawView;
+			sourceTree = "<group>";
+		};
 		08787A852134DC3100569477 = {
 			isa = PBXGroup;
 			children = (
@@ -322,6 +350,7 @@
 				08787AA92134F13500569477 /* Observable+.swift */,
 				08F6EE8B2136599F00F895B6 /* PHPhotoLibrary+SaveImage.swift */,
 				1BD4A3F52137CBCB0022643F /* ImageViewExtension.swift */,
+				0867750321465F9A0062F965 /* Button+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -463,6 +492,7 @@
 				08DA31642140CAE800DE8E3B /* EditImageViewModel.swift */,
 				08DA31622140C9FA00DE8E3B /* EditImageNavigator.swift */,
 				086774F52146075D0062F965 /* EditImageUseCase.swift */,
+				086774FB21463E550062F965 /* EditType.swift */,
 			);
 			path = "Edit Image";
 			sourceTree = "<group>";
@@ -470,8 +500,8 @@
 		08DA31562140C11000DE8E3B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				08DA31572140C12B00DE8E3B /* EditView.xib */,
-				08DA315E2140C25A00DE8E3B /* EditView.swift */,
+				086774FE2146479C0062F965 /* DrawView */,
+				086774FD2146478E0062F965 /* EditView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -492,6 +522,7 @@
 				08E77BC4213E7D15000F93A3 /* ImageDetailNavigator.swift */,
 				08E77BC6213E7D70000F93A3 /* ImageDetailViewController.swift */,
 				08E77BC8213E7E0C000F93A3 /* ImageDetailViewModel.swift */,
+				08677505214674020062F965 /* ImageDetailUseCase.swift */,
 			);
 			path = ImageDetail;
 			sourceTree = "<group>";
@@ -680,6 +711,7 @@
 				08787A9C2134DC3200569477 /* LaunchScreen.storyboard in Resources */,
 				1B08229421425AA000C6EFF0 /* SearchHeader.xib in Resources */,
 				1B757C302136454E0007B882 /* Home.storyboard in Resources */,
+				08677500214647BC0062F965 /* DrawView.xib in Resources */,
 				08C1F20D213E2052005704D2 /* ListImage.storyboard in Resources */,
 				08DA315D2140C19700DE8E3B /* EditCell.xib in Resources */,
 				08DA31582140C12B00DE8E3B /* EditView.xib in Resources */,
@@ -777,6 +809,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08787ABF2134F24000569477 /* RefreshAutoFooter.swift in Sources */,
+				0867750421465F9A0062F965 /* Button+.swift in Sources */,
 				08787B0D213537E700569477 /* URLs.swift in Sources */,
 				08787AC5213527A800569477 /* Collection.swift in Sources */,
 				08787AAC2134F13500569477 /* ActivityIndicator.swift in Sources */,
@@ -786,12 +819,15 @@
 				1B757C32213645620007B882 /* HomeViewController.swift in Sources */,
 				1BD4A3F62137CBCB0022643F /* ImageViewExtension.swift in Sources */,
 				08072A9D213780720020F80E /* Storyboards.swift in Sources */,
+				0867750221464B000062F965 /* DrawView.swift in Sources */,
 				08787AAD2134F13500569477 /* UIViewController+.swift in Sources */,
 				1B757C2B213643CA0007B882 /* IntroNavigator.swift in Sources */,
+				08677506214674020062F965 /* ImageDetailUseCase.swift in Sources */,
 				08787AE521352C3400569477 /* BaseRequest.swift in Sources */,
 				08F6EE8121363C5200F895B6 /* SearchRequest.swift in Sources */,
 				1B505035213F77EC0014C6A5 /* CollectionImagesViewController.swift in Sources */,
 				08787ABB2134F24000569477 /* RefreshAutoHeader.swift in Sources */,
+				086774FC21463E550062F965 /* EditType.swift in Sources */,
 				08F6EE8C2136599F00F895B6 /* PHPhotoLibrary+SaveImage.swift in Sources */,
 				08E77BC7213E7D70000F93A3 /* ImageDetailViewController.swift in Sources */,
 				08787B002135301D00569477 /* PhotoResponse.swift in Sources */,
@@ -1006,7 +1042,10 @@
 				DEVELOPMENT_TEAM = VG5JZ5RSZ7;
 				INFOPLIST_FILE = MyEditor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = c.MyEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1023,7 +1062,10 @@
 				DEVELOPMENT_TEAM = VG5JZ5RSZ7;
 				INFOPLIST_FILE = MyEditor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = c.MyEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

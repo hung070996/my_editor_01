@@ -23,6 +23,16 @@ class ImageDetailViewController: UIViewController, BindableType {
         setupView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     private func setupView() {
         editItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: nil)
         self.navigationItem.rightBarButtonItem = editItem

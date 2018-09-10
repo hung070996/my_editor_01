@@ -8,9 +8,10 @@
 
 import Foundation
 import UIKit
+import Photos
 
 protocol ImageDetailNavigatorType {
-    func toImageDetail(image: UIImage)
+    func toImageDetail(asset: PHAsset)
     func toEditImage(image: UIImage)
 }
 
@@ -18,10 +19,11 @@ struct ImageDetailNavigator: ImageDetailNavigatorType {
     
     unowned let navigationController: UINavigationController
     
-    func toImageDetail(image: UIImage) {
+    func toImageDetail(asset: PHAsset) {
         let imageDetailViewController = ImageDetailViewController.instantiate()
-        let imageDetailViewModel = ImageDetailViewModel(image: image,
-                                                        navigator: ImageDetailNavigator(navigationController: navigationController))
+        let imageDetailViewModel = ImageDetailViewModel(asset: asset,
+                                                        navigator: ImageDetailNavigator(navigationController: navigationController),
+                                                        useCase: ImageDetailUseCase())
         imageDetailViewController.bindViewModel(to: imageDetailViewModel)
         navigationController.pushViewController(imageDetailViewController, animated: true)
     }

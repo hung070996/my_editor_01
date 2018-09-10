@@ -18,13 +18,21 @@ class EditImageViewController: UIViewController, BindableType {
     }
     
     var viewModel: EditImageViewModel!
+    private var state: EditType?
     private var lastestImage = PublishSubject<UIImage>()
     private var saveItem = UIBarButtonItem()
     private var doneItem = UIBarButtonItem()
+    private var colorToDraw = UIColor.black
+    private var strokeWidth: Float = 0
+    private var lastPoint = CGPoint.zero
+    private var fromPoint = CGPoint()
+    private var listDrawImage = [UIImage]()
+    private var indexImageDraw = 0
 
     @IBOutlet private var viewContentImage: UIView!
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var editView: EditView!
+    @IBOutlet private var drawView: DrawView!
     @IBOutlet private var viewCrop: UIView!
     @IBOutlet private var bottom: NSLayoutConstraint!
     @IBOutlet private var trailing: NSLayoutConstraint!
@@ -40,14 +48,20 @@ class EditImageViewController: UIViewController, BindableType {
     
     private func configView() {
         editView.configCollectionView(viewController: self)
+        drawView.delegate = self
         saveItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: nil)
         doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: nil)
         viewCrop.isHidden = true
     }
     
     private func doneEdit() {
-        imageView.image = imageView.image?.resize(scaledTo: imageView.frame.size)?.crop(rect: viewCrop.frame)
+        if state == .crop {
+            imageView.image = imageView.image?.resize(scaledTo: imageView.frame.size)?.crop(rect: viewCrop.frame)
+        }
+        state = nil
+        listDrawImage = [UIImage]()
         updateConstaintImageView()
+        resetConstraitViewCrop()
         viewCrop.isHidden = true
         navigationItem.rightBarButtonItem = saveItem
         guard let image = imageView.image else {
@@ -82,30 +96,90 @@ class EditImageViewController: UIViewController, BindableType {
         updateConstaintImageView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     func bindViewModel() {
         let input = EditImageViewModel.Input(loadTrigger: Driver.just(()),
                                              clickSaveTrigger: saveItem.rx.tap.asDriver(),
                                              latestImage: lastestImage.asDriverOnErrorJustComplete(),
-                                             clickDoneTrigger: doneItem.rx.tap.asDriver())
+                                             clickDoneTrigger: doneItem.rx.tap.asDriver(),
+                                             clickTypeEdit: editView.getCollection().rx.itemSelected.asDriver(),
+                                             sliderDrawTrigger: drawView.getSlider().rx.value.asDriver(),
+                                             clickUndoTrigger: drawView.getUndoButton().rx.tap.asDriver(),
+                                             clickRedoTrigger: drawView.getRedoButton().rx.tap.asDriver())
         let output = viewModel.transform(input)
         output.image
             .drive(imageView.rx.image)
             .disposed(by: rx.disposeBag)
         output.clickedSave
             .drive(onNext: { (result) in
-            print("success")
-        })
+                print("success")
+            })
             .disposed(by: rx.disposeBag)
-        output.clickedDone.drive(onNext: { _ in
-            self.doneEdit()
-        })
+        output.clickedDone
+            .drive(onNext: { [unowned self] _ in
+                self.doneEdit()
+                self.view.bringSubview(toFront: self.editView)
+            })
             .disposed(by: rx.disposeBag)
-        output.listEdit.drive(editView.getCollection().rx.items) { collectionView, index, element in
-            let indexPath = IndexPath(row: index, section: 0)
-            let cell: EditCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.setContentForCell(title: element.0, image: element.1)
-            return cell
-        }
+        output.listEdit
+            .drive(editView.getCollection().rx.items) { collectionView, index, element in
+                let indexPath = IndexPath(row: index, section: 0)
+                let cell: EditCell = collectionView.dequeueReusableCell(for: indexPath)
+                cell.setContentForCell(type: element)
+                return cell
+            }
+            .disposed(by: rx.disposeBag)
+        output.clickedTypeEdit
+            .drive(onNext: { [unowned self] typeEdit in
+                self.navigationItem.rightBarButtonItem = self.doneItem
+                switch typeEdit {
+                case .crop:
+                    self.state = .crop
+                    self.viewCrop.isHidden = false
+                case .draw:
+                    self.state = .draw
+                    self.view.bringSubview(toFront: self.drawView)
+                    self.listDrawImage = [UIImage]()
+                    self.indexImageDraw = 0
+                    guard let image = self.imageView.image else {
+                        return
+                    }
+                    self.listDrawImage.append(image)
+                case .brightness:
+                    self.state = .brightness
+                    print("brightness")
+                }
+            })
+            .disposed(by: rx.disposeBag)
+        output.valueSliderDraw
+            .drive(onNext: { [unowned self] value in
+                self.strokeWidth = value
+            })
+            .disposed(by: rx.disposeBag)
+        output.clickedUndo
+            .drive(onNext: { [unowned self] _ in
+                if self.indexImageDraw > 0 {
+                    self.indexImageDraw -= 1
+                    self.imageView.image = self.listDrawImage[self.indexImageDraw]
+                }
+            })
+            .disposed(by: rx.disposeBag)
+        output.clickedRedo
+            .drive(onNext: { [unowned self] _ in
+                if self.indexImageDraw < self.listDrawImage.count - 1 {
+                    self.indexImageDraw += 1
+                    self.imageView.image = self.listDrawImage[self.indexImageDraw]
+                }
+            })
             .disposed(by: rx.disposeBag)
         guard let image = imageView.image else {
             return
@@ -181,20 +255,52 @@ class EditImageViewController: UIViewController, BindableType {
         }
         sender.setTranslation(CGPoint.zero, in: viewCrop)
     }
-}
-
-extension EditImageViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            viewCrop.isHidden = false
-            navigationItem.rightBarButtonItem = doneItem
-            resetConstraitViewCrop()
-        default:
-            break
+    
+    //MARK: Edit_Draw
+    func drawLine(fromPoint: CGPoint, toPoint: CGPoint, width: Float) {
+        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, true, 0.0)
+        imageView.image?.draw(in: imageView.frame)
+        let context = UIGraphicsGetCurrentContext()
+        context?.move(to: fromPoint)
+        context?.addLine(to: toPoint)
+        context?.setLineCap(CGLineCap.round)
+        context?.setLineWidth(CGFloat(width))
+        context?.setStrokeColor(colorToDraw.cgColor)
+        context?.setBlendMode(CGBlendMode.normal)
+        context?.strokePath()
+        imageView.image = UIGraphicsGetImageFromCurrentImageContext()
+        imageView.alpha = 1
+        UIGraphicsEndImageContext()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first, let state = state, state == .draw {
+            lastPoint = touch.preciseLocation(in: self.imageView)
+        }
+        if indexImageDraw < listDrawImage.count - 1 {
+            for _ in indexImageDraw + 1 ... listDrawImage.count - 1 {
+                listDrawImage.removeLast()
+            }
         }
     }
     
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first, let state = state, state == .draw {
+            let currentPoint = touch.preciseLocation(in: self.imageView)
+            drawLine(fromPoint: lastPoint, toPoint: currentPoint, width: strokeWidth)
+            lastPoint = currentPoint
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let image = imageView.image, let state = state, state == .draw {
+            listDrawImage.append(image)
+            indexImageDraw += 1
+        }
+    }
+}
+
+extension EditImageViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: CGFloat(Constant.widthCell), height: collectionView.frame.size.height)
     }
@@ -202,4 +308,10 @@ extension EditImageViewController: UICollectionViewDelegate, UICollectionViewDel
 
 extension EditImageViewController: StoryboardSceneBased {
     static var sceneStoryboard = Storyboards.editImage
+}
+
+extension EditImageViewController: DrawViewDelegate {
+    func getColor(color: UIColor) {
+        colorToDraw = color
+    }
 }

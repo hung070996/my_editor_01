@@ -22,12 +22,17 @@ struct ImageDetailViewModel: ViewModelType {
         let clickedEdit: Driver<Void>
     }
     
-    let image: UIImage
+    let asset: PHAsset
     let navigator: ImageDetailNavigator
+    let useCase: ImageDetailUseCase
     
     func transform(_ input: ImageDetailViewModel.Input) -> ImageDetailViewModel.Output {
         let image = input.loadTrigger
-            .map {  _ in self.image }
+            .flatMapLatest { _ in
+                return self.useCase
+                    .loadImage(asset: self.asset)
+                    .asDriverOnErrorJustComplete()
+        }
         let clickedEdit = input.clickEditTrigger
             .withLatestFrom(image)
             .do(onNext: self.navigator.toEditImage(image:))

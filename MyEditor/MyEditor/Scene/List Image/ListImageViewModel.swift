@@ -18,7 +18,7 @@ struct ListImageViewModel: ViewModelType {
     }
     
     struct Output {
-        let listImage: Driver<[UIImage]>
+        let listAsset: Driver<[PHAsset]>
         let imageSelected: Driver<Void>
     }
     
@@ -27,16 +27,21 @@ struct ListImageViewModel: ViewModelType {
     let navigator: ListImageNavigator
     
     func transform(_ input: ListImageViewModel.Input) -> ListImageViewModel.Output {
-        let listImage = input.loadTrigger.flatMapLatest { _ in
-            return self.useCase.getListImage(album: self.album)
+        let listAsset = input.loadTrigger.flatMapLatest { _ in
+            return self.useCase
+                .getListAsset(album: self.album)
                 .asDriverOnErrorJustComplete()
         }
         let imageSelected = input.selectImageTrigger
-            .withLatestFrom(listImage) { indexPath, listImage in
-            self.navigator.toImageDetail(image: listImage[indexPath.row])
-        }
+            .withLatestFrom(listAsset) { indexPath, listAsset in
+                return listAsset[indexPath.item]
+            }
+            .do(onNext: { asset in
+                self.navigator.toImageDetail(asset: asset)
+            })
+            .mapToVoid()
         return Output(
-            listImage: listImage,
+            listAsset: listAsset,
             imageSelected: imageSelected
         )
     }
