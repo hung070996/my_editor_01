@@ -181,6 +181,45 @@ class EditImageViewController: UIViewController, BindableType {
                 }
             })
             .disposed(by: rx.disposeBag)
+        output.clickedTypeEdit.drive(onNext: { typeEdit in
+            self.navigationItem.rightBarButtonItem = self.doneItem
+            switch typeEdit {
+            case .crop:
+                self.state = .crop
+                self.viewCrop.isHidden = false
+            case .draw:
+                self.state = .draw
+                self.view.bringSubview(toFront: self.drawView)
+                self.listDrawImage = [UIImage]()
+                self.indexImageDraw = 0
+                guard let image = self.imageView.image else {
+                    return
+                }
+                self.listDrawImage.append(image)
+            case .brightness:
+                self.state = .brightness
+                print("brightness")
+            }
+        })
+            .disposed(by: rx.disposeBag)
+        output.valueSliderDraw.drive(onNext: { value in
+            self.strokeWidth = value
+        })
+            .disposed(by: rx.disposeBag)
+        output.clickedUndo.drive(onNext: { _ in
+            if self.indexImageDraw > 0 {
+                self.indexImageDraw -= 1
+                self.imageView.image = self.listDrawImage[self.indexImageDraw]
+            }
+        })
+            .disposed(by: rx.disposeBag)
+        output.clickedRedo.drive(onNext: { _ in
+            if self.indexImageDraw < self.listDrawImage.count - 1 {
+                self.indexImageDraw += 1
+                self.imageView.image = self.listDrawImage[self.indexImageDraw]
+            }
+        })
+            .disposed(by: rx.disposeBag)
         guard let image = imageView.image else {
             return
         }
