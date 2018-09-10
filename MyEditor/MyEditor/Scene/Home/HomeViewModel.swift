@@ -71,7 +71,8 @@ struct HomeViewModel: ViewModelType {
                 return collections[indexPath.row]
             }
             .do(onNext: { collection in
-                self.navigator.toCollectionScreen(collection: collection)
+//                self.navigator.toCollectionScreen(collection: collection)
+                self.navigator.toSearchScreen()
             })
             .mapToVoid()
         let selectedPhoto = input.selectTableViewTrigger

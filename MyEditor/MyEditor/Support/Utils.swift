@@ -7,7 +7,11 @@
 //
 
 import UIKit
+import RxCocoa
 
+fileprivate struct ConstantData {
+    static let historiesKey = "Histories"
+}
 func getBlurView(style: UIBlurEffectStyle, alpha: CGFloat, superView: UIView) -> UIVisualEffectView {
     let blurEffect = UIBlurEffect(style: style)
     let blurOverlay = UIVisualEffectView(effect: blurEffect)
@@ -17,3 +21,13 @@ func getBlurView(style: UIBlurEffectStyle, alpha: CGFloat, superView: UIView) ->
     return blurOverlay
 }
 
+func saveHistorySearch(histories: [String]) {
+    UserDefaults.standard.set(histories, forKey: ConstantData.historiesKey)
+}
+
+func readHistorySearch() -> [String] {
+    guard let result = UserDefaults.standard.array(forKey: ConstantData.historiesKey) as? [String] else {
+        return [String]()
+    }
+    return result
+}

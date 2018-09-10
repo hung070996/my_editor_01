@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search View Controller-->
+        <scene sceneID="Zx0-Fy-dbc">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" id="JVG-5U-N3Z" customClass="SearchViewController" customModule="MyEditor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hjM-sr-fkD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ijr-MH-KSv">
+                                <rect key="frame" x="0.0" y="20" width="300" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="rVP-ls-cZr"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="JVG-5U-N3Z" id="csc-o0-bem"/>
+                                </connections>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogp-Fh-NDk">
+                                <rect key="frame" x="300" y="20" width="75" height="56"/>
+                                <color key="backgroundColor" red="0.78808718919754028" green="0.78791451454162598" blue="0.80853986740112305" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="co4-aX-9V2">
+                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ijr-MH-KSv" firstAttribute="top" secondItem="SxU-1S-3pX" secondAttribute="top" id="3hx-Ia-2kt"/>
+                            <constraint firstItem="co4-aX-9V2" firstAttribute="top" secondItem="ijr-MH-KSv" secondAttribute="bottom" id="EIH-IU-SmE"/>
+                            <constraint firstItem="ogp-Fh-NDk" firstAttribute="width" secondItem="hjM-sr-fkD" secondAttribute="width" multiplier="1/5" id="Hg7-cS-ZOh"/>
+                            <constraint firstItem="ijr-MH-KSv" firstAttribute="leading" secondItem="SxU-1S-3pX" secondAttribute="leading" id="U8p-aD-yoL"/>
+                            <constraint firstItem="ogp-Fh-NDk" firstAttribute="top" secondItem="SxU-1S-3pX" secondAttribute="top" id="mlC-vN-fc7"/>
+                            <constraint firstItem="SxU-1S-3pX" firstAttribute="bottom" secondItem="co4-aX-9V2" secondAttribute="bottom" id="myT-zk-HQK"/>
+                            <constraint firstItem="ogp-Fh-NDk" firstAttribute="height" secondItem="ijr-MH-KSv" secondAttribute="height" id="nDi-hi-fSE"/>
+                            <constraint firstItem="ogp-Fh-NDk" firstAttribute="leading" secondItem="ijr-MH-KSv" secondAttribute="trailing" id="nLP-2D-tP7"/>
+                            <constraint firstItem="co4-aX-9V2" firstAttribute="leading" secondItem="SxU-1S-3pX" secondAttribute="leading" id="tbK-ib-829"/>
+                            <constraint firstItem="SxU-1S-3pX" firstAttribute="trailing" secondItem="co4-aX-9V2" secondAttribute="trailing" id="xOo-6E-Lyt"/>
+                            <constraint firstItem="SxU-1S-3pX" firstAttribute="trailing" secondItem="ogp-Fh-NDk" secondAttribute="trailing" id="y1p-wm-PvB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SxU-1S-3pX"/>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="ogp-Fh-NDk" id="K5z-o2-VZB"/>
+                        <outlet property="searchBar" destination="ijr-MH-KSv" id="MZj-3I-PV1"/>
+                        <outlet property="searchTableView" destination="co4-aX-9V2" id="BhP-Fz-bAx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zVo-xR-UUJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-429.60000000000002" y="124.58770614692655"/>
+        </scene>
+    </scenes>
+</document>
