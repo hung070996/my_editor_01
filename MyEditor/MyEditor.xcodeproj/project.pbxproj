@@ -25,7 +25,7 @@
 		086774FC21463E550062F965 /* EditType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086774FB21463E550062F965 /* EditType.swift */; };
 		08677500214647BC0062F965 /* DrawView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086774FF214647BC0062F965 /* DrawView.xib */; };
 		0867750221464B000062F965 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0867750121464B000062F965 /* DrawView.swift */; };
-		0867750421465F9A0062F965 /* Button+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0867750321465F9A0062F965 /* Button+.swift */; };
+		0867750421465F9A0062F965 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0867750321465F9A0062F965 /* UIView+.swift */; };
 		08677506214674020062F965 /* ImageDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08677505214674020062F965 /* ImageDetailUseCase.swift */; };
 		08787A922134DC3100569477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08787A912134DC3100569477 /* AppDelegate.swift */; };
 		08787A972134DC3100569477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08787A952134DC3100569477 /* Main.storyboard */; };
@@ -137,7 +137,7 @@
 		086774FB21463E550062F965 /* EditType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditType.swift; sourceTree = "<group>"; };
 		086774FF214647BC0062F965 /* DrawView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawView.xib; sourceTree = "<group>"; };
 		0867750121464B000062F965 /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
-		0867750321465F9A0062F965 /* Button+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+.swift"; sourceTree = "<group>"; };
+		0867750321465F9A0062F965 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		08677505214674020062F965 /* ImageDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailUseCase.swift; sourceTree = "<group>"; };
 		08787A8E2134DC3100569477 /* MyEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08787A912134DC3100569477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -354,7 +354,7 @@
 				08787AA92134F13500569477 /* Observable+.swift */,
 				08F6EE8B2136599F00F895B6 /* PHPhotoLibrary+SaveImage.swift */,
 				1BD4A3F52137CBCB0022643F /* ImageViewExtension.swift */,
-				0867750321465F9A0062F965 /* Button+.swift */,
+				0867750321465F9A0062F965 /* UIView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -780,6 +780,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/paper-onboarding/paper_onboarding.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -800,6 +801,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/paper_onboarding.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -815,7 +817,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08787ABF2134F24000569477 /* RefreshAutoFooter.swift in Sources */,
-				0867750421465F9A0062F965 /* Button+.swift in Sources */,
+				0867750421465F9A0062F965 /* UIView+.swift in Sources */,
 				08787B0D213537E700569477 /* URLs.swift in Sources */,
 				08787AC5213527A800569477 /* Collection.swift in Sources */,
 				08787AAC2134F13500569477 /* ActivityIndicator.swift in Sources */,

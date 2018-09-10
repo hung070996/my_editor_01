@@ -34,7 +34,7 @@ class ImageDetailViewController: UIViewController, BindableType {
     }
     
     private func setupView() {
-        editItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: nil)
+        editItem = UIBarButtonItem(image: UIImage(named: "edit"), style: .done, target: self, action: nil)
         self.navigationItem.rightBarButtonItem = editItem
     }
     

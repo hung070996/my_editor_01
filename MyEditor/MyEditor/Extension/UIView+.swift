@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension UIButton {
+extension UIView {
     func makeRound() {
         layer.cornerRadius = frame.size.width / 2
     }

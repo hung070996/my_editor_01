@@ -25,6 +25,9 @@ class DrawView: UIView, NibOwnerLoadable {
         self.loadNibContent()
         for button in colorButtons {
             button.makeRound()
+            if button.backgroundColor == .black {
+                button.makeShadow()
+            }
         }
     }
     

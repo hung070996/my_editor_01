@@ -20,33 +20,46 @@
                 <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Intro_Icon_View" translatesAutoresizingMaskIntoConstraints="NO" id="x9W-Cz-gpD">
-                        <rect key="frame" x="0.0" y="50" width="100" height="100"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kJn-Bd-5kZ">
+                        <rect key="frame" x="5" y="5" width="90" height="140"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Co5-Wk-J6S">
+                                <rect key="frame" x="24" y="10" width="42" height="50"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Intro_Icon_View" translatesAutoresizingMaskIntoConstraints="NO" id="x9W-Cz-gpD">
+                                <rect key="frame" x="20" y="70" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="x9W-Cz-gpD" secondAttribute="height" id="5pd-CR-cnV"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="x9W-Cz-gpD" secondAttribute="height" id="5pd-CR-cnV"/>
+                            <constraint firstAttribute="bottom" secondItem="x9W-Cz-gpD" secondAttribute="bottom" constant="20" id="313-Aw-st4"/>
+                            <constraint firstItem="Co5-Wk-J6S" firstAttribute="centerX" secondItem="kJn-Bd-5kZ" secondAttribute="centerX" id="8jG-5h-2CG"/>
+                            <constraint firstItem="x9W-Cz-gpD" firstAttribute="centerX" secondItem="kJn-Bd-5kZ" secondAttribute="centerX" id="ESQ-BZ-lWt"/>
+                            <constraint firstItem="x9W-Cz-gpD" firstAttribute="top" secondItem="Co5-Wk-J6S" secondAttribute="bottom" constant="10" id="Q7V-QN-XzP"/>
+                            <constraint firstItem="x9W-Cz-gpD" firstAttribute="leading" secondItem="kJn-Bd-5kZ" secondAttribute="leading" constant="20" id="jmq-Px-HRR"/>
+                            <constraint firstItem="Co5-Wk-J6S" firstAttribute="top" secondItem="kJn-Bd-5kZ" secondAttribute="top" constant="10" id="u9W-oB-Y8V"/>
                         </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Co5-Wk-J6S">
-                        <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="x9W-Cz-gpD" secondAttribute="bottom" id="0yw-TJ-cds"/>
-                <constraint firstItem="x9W-Cz-gpD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="1D9-Ih-sbq"/>
-                <constraint firstAttribute="trailing" secondItem="Co5-Wk-J6S" secondAttribute="trailing" id="WrS-cn-KAx"/>
-                <constraint firstItem="x9W-Cz-gpD" firstAttribute="top" secondItem="Co5-Wk-J6S" secondAttribute="bottom" id="g6G-lV-LXf"/>
-                <constraint firstItem="Co5-Wk-J6S" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="lZD-2P-Xey"/>
-                <constraint firstAttribute="trailing" secondItem="x9W-Cz-gpD" secondAttribute="trailing" id="mdf-CQ-pto"/>
-                <constraint firstItem="Co5-Wk-J6S" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="uiU-sc-cGV"/>
+                <constraint firstAttribute="trailing" secondItem="kJn-Bd-5kZ" secondAttribute="trailing" constant="5" id="2qW-qR-k06"/>
+                <constraint firstItem="kJn-Bd-5kZ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="XLp-Qh-Bm9"/>
+                <constraint firstItem="kJn-Bd-5kZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="fKs-NN-W3d"/>
+                <constraint firstAttribute="bottom" secondItem="kJn-Bd-5kZ" secondAttribute="bottom" constant="5" id="nTo-n7-V4V"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
                 <outlet property="imageView" destination="x9W-Cz-gpD" id="DjT-AV-MEf"/>
                 <outlet property="label" destination="Co5-Wk-J6S" id="X21-Xv-OBx"/>
+                <outlet property="mainView" destination="kJn-Bd-5kZ" id="6ud-O6-0vU"/>
             </connections>
         </collectionViewCell>
     </objects>

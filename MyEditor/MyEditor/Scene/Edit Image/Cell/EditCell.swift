@@ -12,6 +12,7 @@ import Reusable
 class EditCell: UICollectionViewCell, NibReusable {
     @IBOutlet private var label: UILabel!
     @IBOutlet private var imageView: UIImageView!
+    @IBOutlet private var mainView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,5 +22,6 @@ class EditCell: UICollectionViewCell, NibReusable {
         label.text = type.item.0
         let image = UIImage(named: type.item.1)
         imageView.image = image
+        mainView.makeShadow()
     }
 }

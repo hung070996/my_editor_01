@@ -18,8 +18,10 @@ struct AppNavigator: AppNavigatorType {
     private struct Constant {
         static let home = "Home"
         static let library = "Library"
-        static let iconHome = "Intro_Icon_Home"
-        static let iconLibrary = "Intro_Icon_List"
+        static let iconHome = "home_unclick"
+        static let iconHomeSelected = "home"
+        static let iconLibrary = "library_unclick"
+        static let iconLibrarySelected = "library"
     }
     
     unowned let window: UIWindow
@@ -35,12 +37,14 @@ struct AppNavigator: AppNavigatorType {
         homeViewController.bindViewModel(to: homeViewModel)
         homeNavigationController.tabBarItem = UITabBarItem(title: Constant.home,
                                                            image: UIImage(named: Constant.iconHome)?.withRenderingMode(UIImageRenderingMode.alwaysOriginal),
-                                                           selectedImage: UIImage(named: Constant.iconHome))
+                                                           selectedImage: UIImage(named: Constant.iconHomeSelected)?.withRenderingMode(UIImageRenderingMode.alwaysOriginal))
         //Tab Library
         let libraryViewController = LibraryViewController.instantiate()
         let libraryNavigationController = UINavigationController(rootViewController: libraryViewController)
         libraryNavigationController.navigationBar.tintColor = .black
-        libraryNavigationController.tabBarItem = UITabBarItem(title: Constant.library, image: UIImage(named: Constant.iconLibrary), selectedImage: UIImage(named: Constant.iconLibrary))
+        libraryNavigationController.tabBarItem = UITabBarItem(title: Constant.library,
+                                                              image: UIImage(named: Constant.iconLibrary)?.withRenderingMode(UIImageRenderingMode.alwaysOriginal),
+                                                              selectedImage: UIImage(named: Constant.iconLibrarySelected)?.withRenderingMode(UIImageRenderingMode.alwaysOriginal))
         let libraryNavigator = LibraryNavigator(navigationController: libraryNavigationController)
         let libraryUseCase = LibraryUseCase()
         let libraryViewModel = LibraryViewModel(useCase: libraryUseCase, navigator: libraryNavigator)

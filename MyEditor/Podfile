@@ -22,4 +22,5 @@ pod 'SnapKit'
 pod 'Kingfisher'
 pod 'RxGesture'
 pod 'RxDataSources'
+pod 'Toast-Swift'
 end
