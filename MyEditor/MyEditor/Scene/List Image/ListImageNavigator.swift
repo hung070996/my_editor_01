@@ -8,10 +8,11 @@
 
 import Foundation
 import UIKit
+import Photos
 
 protocol ListImageNavigatorType {
     func toListImage(in album: Album)
-    func toImageDetail(image: UIImage)
+    func toImageDetail(asset: PHAsset)
 }
 
 struct ListImageNavigator: ListImageNavigatorType {
@@ -26,8 +27,8 @@ struct ListImageNavigator: ListImageNavigatorType {
         navigationController.pushViewController(listImageViewController, animated: true)
     }
     
-    func toImageDetail(image: UIImage) {
+    func toImageDetail(asset: PHAsset) {
         let navigator = ImageDetailNavigator(navigationController: navigationController)
-        navigator.toImageDetail(image: image)
+        navigator.toImageDetail(asset: asset)
     }
 }

@@ -17,9 +17,9 @@ class EditCell: UICollectionViewCell, NibReusable {
         super.awakeFromNib()
     }
     
-    func setContentForCell(title: String, image: String) {
-        label.text = title
-        let image = UIImage(named: image)
+    func setContentForCell(type: EditType) {
+        label.text = type.item.0
+        let image = UIImage(named: type.item.1)
         imageView.image = image
     }
 }

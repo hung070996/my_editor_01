@@ -29,11 +29,11 @@ class ListImageViewController: UIViewController, BindableType {
         let input = ListImageViewModel.Input(loadTrigger: Driver.just(()),
                                              selectImageTrigger: collectionView.rx.itemSelected.asDriver())
         let output = viewModel.transform(input)
-        output.listImage
+        output.listAsset
             .drive(collectionView.rx.items) { collectionView, index, element in
-            let indexPath = IndexPath(row: index, section: 0)
+            let indexPath = IndexPath(item: index, section: 0)
             let cell: ListImageCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.setContentForCell(image: element)
+            cell.setContentForCell(asset: element)
             return cell
         }
             .disposed(by: rx.disposeBag)
