@@ -11,6 +11,7 @@ import Reusable
 import RxSwift
 import RxCocoa
 import Photos
+import CoreImage
 
 class EditImageViewController: UIViewController, BindableType {
     private struct Constant {
@@ -29,7 +30,13 @@ class EditImageViewController: UIViewController, BindableType {
     private var fromPoint = CGPoint()
     private var listDrawImage = [UIImage]()
     private var indexImageDraw = 0
+    private var contrastFilter = CIFilter(name: "CIColorControls")
+    private var brightnessFilter = CIFilter(name: "CIColorControls")
 
+    @IBOutlet private var contrastSlider: UISlider!
+    @IBOutlet private var brightnessSlider: UISlider!
+    @IBOutlet private var contrastView: UIView!
+    @IBOutlet private var brightnessView: UIView!
     @IBOutlet private var viewContentImage: UIView!
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var editView: EditView!
@@ -56,10 +63,22 @@ class EditImageViewController: UIViewController, BindableType {
         viewCrop.isHidden = true
     }
     
+    private func configFilter() {
+        guard let image = imageView.image, let cgImage = image.cgImage else {
+            return
+        }
+        let aCIImage = CIImage(cgImage: cgImage)
+        contrastFilter?.setValue(aCIImage, forKey: "inputImage")
+        brightnessFilter?.setValue(aCIImage, forKey: "inputImage")
+    }
+    
     private func doneEdit() {
         if state == .crop {
             imageView.image = imageView.image?.resize(scaledTo: imageView.frame.size)?.crop(rect: viewCrop.frame)
         }
+        configFilter()
+        contrastSlider.value = 1
+        brightnessSlider.value = 0
         state = nil
         listDrawImage = [UIImage]()
         updateConstaintImageView()
@@ -116,11 +135,14 @@ class EditImageViewController: UIViewController, BindableType {
                                              clickTypeEdit: editView.getCollection().rx.itemSelected.asDriver(),
                                              sliderDrawTrigger: drawView.getSlider().rx.value.asDriver(),
                                              clickUndoTrigger: drawView.getUndoButton().rx.tap.asDriver(),
-                                             clickRedoTrigger: drawView.getRedoButton().rx.tap.asDriver())
+                                             clickRedoTrigger: drawView.getRedoButton().rx.tap.asDriver(),
+                                             sliderBrightnessTrigger: brightnessSlider.rx.value.asDriver(),
+                                             sliderContrastTrigger: contrastSlider.rx.value.asDriver())
         let output = viewModel.transform(input)
         output.image
             .drive(imageView.rx.image)
             .disposed(by: rx.disposeBag)
+        configFilter()
         output.clickedSave
             .drive(onNext: { result in
                 if result {
@@ -163,10 +185,10 @@ class EditImageViewController: UIViewController, BindableType {
                     self.listDrawImage.append(image)
                 case .brightness:
                     self.state = .brightness
-                    print("brightness")
+                    self.view.bringSubview(toFront: self.brightnessView)
                 case .contrast:
                     self.state = .contrast
-                    print("contrast")
+                    self.view.bringSubview(toFront: self.contrastView)
                 }
             })
             .disposed(by: rx.disposeBag)
@@ -189,6 +211,14 @@ class EditImageViewController: UIViewController, BindableType {
                     self.indexImageDraw += 1
                     self.imageView.image = self.listDrawImage[self.indexImageDraw]
                 }
+            })
+            .disposed(by: rx.disposeBag)
+        output.valueSliderBrightness.drive(onNext: { [unowned self] value in
+                self.changeBrightness(value: value)
+            })
+            .disposed(by: rx.disposeBag)
+        output.valueSliderContrast.drive(onNext: { [unowned self] value in
+                self.changeContrast(value: value)
             })
             .disposed(by: rx.disposeBag)
         guard let image = imageView.image else {
@@ -303,6 +333,31 @@ class EditImageViewController: UIViewController, BindableType {
             listDrawImage.append(image)
             indexImageDraw += 1
         }
+    }
+    
+    //MARK: Edit Brightness + Contrast
+    func changeBrightness(value: Float) {
+        brightnessFilter?.setValue(NSNumber(value: value), forKey: "inputBrightness")
+        guard let outputImage = brightnessFilter?.outputImage else {
+            return
+        }
+        guard let cgImage = CIContext(options: nil).createCGImage(outputImage, from: outputImage.extent) else {
+            return
+        }
+        let newImage = UIImage(cgImage: cgImage)
+        imageView.image = newImage
+    }
+    
+    func changeContrast(value: Float) {
+        contrastFilter?.setValue(NSNumber(value: value), forKey: "inputContrast")
+        guard let outputImage = contrastFilter?.outputImage else {
+            return
+        }
+        guard let cgImage = CIContext(options: nil).createCGImage(outputImage, from: outputImage.extent) else {
+            return
+        }
+        let newImage = UIImage(cgImage: cgImage)
+        imageView.image = newImage
     }
 }
 

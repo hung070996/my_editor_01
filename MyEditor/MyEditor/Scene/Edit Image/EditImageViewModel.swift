@@ -21,6 +21,8 @@ struct EditImageViewModel: ViewModelType {
         let sliderDrawTrigger: Driver<Float>
         let clickUndoTrigger: Driver<Void>
         let clickRedoTrigger: Driver<Void>
+        let sliderBrightnessTrigger: Driver<Float>
+        let sliderContrastTrigger: Driver<Float>
     }
     
     struct Output {
@@ -32,6 +34,8 @@ struct EditImageViewModel: ViewModelType {
         let valueSliderDraw: Driver<Float>
         let clickedUndo: Driver<Void>
         let clickedRedo: Driver<Void>
+        let valueSliderBrightness: Driver<Float>
+        let valueSliderContrast: Driver<Float>
     }
     
     let image: UIImage
@@ -58,6 +62,8 @@ struct EditImageViewModel: ViewModelType {
         let valueSliderDraw = input.sliderDrawTrigger
         let clickedUndo = input.clickUndoTrigger
         let clickedRedo = input.clickRedoTrigger
+        let valueSliderBrightness = input.sliderBrightnessTrigger
+        let valueSliderContrast = input.sliderContrastTrigger
         return Output(
             image: image,
             clickedSave: clickedSave.asDriver(),
@@ -66,7 +72,9 @@ struct EditImageViewModel: ViewModelType {
             clickedTypeEdit: clickedTypeEdit,
             valueSliderDraw: valueSliderDraw,
             clickedUndo: clickedUndo,
-            clickedRedo: clickedRedo
+            clickedRedo: clickedRedo,
+            valueSliderBrightness: valueSliderBrightness,
+            valueSliderContrast: valueSliderContrast
         )
     }
 }
