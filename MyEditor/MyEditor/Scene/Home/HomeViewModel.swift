@@ -12,6 +12,7 @@ import RxCocoa
 struct HomeViewModel: ViewModelType {
     struct Input {
         let loadTrigger: Driver<Void>
+        let randomImageTrigger: Driver<Void>
         let loadCollectionTrigger: Driver<Void>
         let reloadTableViewTrigger: Driver<Void>
         let loadMoreTableViewTrigger: Driver<Void>
@@ -32,6 +33,7 @@ struct HomeViewModel: ViewModelType {
         let loadingMoreCollectionView: Driver<Bool>
         let fetchItemsTableView: Driver<Void>
         let fetchItemsCollectionView: Driver<Void>
+        let randomPhoto: Driver<String>
         let photos: Driver<[Photo]>
         let collections: Driver<[Collection]>
         let isEmptyPhotoData: Driver<Bool>
@@ -83,6 +85,15 @@ struct HomeViewModel: ViewModelType {
                 print(photo)
             })
             .mapToVoid()
+        let randomPhoto = input.randomImageTrigger
+            .flatMapLatest { _ in
+            self.useCase.getRandomPhoto()
+                .trackError(ErrorTracker())
+                .asDriverOnErrorJustComplete()
+            }
+            .map { photo in
+                return photo.urls.regular
+            }
         
         return Output(
             errorTableView: loadErrorTable,
@@ -95,6 +106,7 @@ struct HomeViewModel: ViewModelType {
             loadingMoreCollectionView: loadingMoreCollection,
             fetchItemsTableView: fetchItemsTable,
             fetchItemsCollectionView: fetchItemsCollection,
+            randomPhoto: randomPhoto,
             photos: photos,
             collections: collections,
             isEmptyPhotoData: isEmptyPhotos,

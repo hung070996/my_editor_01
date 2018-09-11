@@ -10,6 +10,7 @@ import RxSwift
 
 protocol ImageRepositoryType {
     func getNewPhotos(page: Int, perPage: Int) -> Observable<[Photo]>
+    func getRandomPhoto() -> Observable<Photo>
     func searchPhotos(query: String, page: Int, perPage: Int) -> Observable<[Photo]>
 }
 
@@ -26,6 +27,12 @@ final class ImageRepository: ImageRepositoryType {
             .map { (output: PhotoResponse) -> [Photo] in
                 return output.listPhotos
             }
+    }
+    
+    func getRandomPhoto() -> Observable<Photo> {
+        return api.request(input: RandomRequest()).map { (output: Photo) -> Photo in
+            return output
+        }
     }
     
     func searchPhotos(query: String, page: Int = 1, perPage: Int = 10) -> Observable<[Photo]> {

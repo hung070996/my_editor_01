@@ -17,6 +17,14 @@ extension ObservableType where E == Bool {
 }
 
 extension ObservableType {
+    public func repeatEvery(period: RxTimeInterval, scheduler: SchedulerType)
+        -> Observable<E> {
+            return Observable<Int>.timer(0, period: period, scheduler: scheduler)
+                .flatMapLatest { _ in
+                    return self
+            }
+    }
+    
     public func unwrap<T>() -> Observable<T> where E == T? {
         return self.filter { value in
             if case .some = value {

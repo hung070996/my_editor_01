@@ -33,7 +33,9 @@ struct AppNavigator: AppNavigatorType {
         let homeNavigator = HomeNavigator(navigationViewController: homeNavigationController)
         let homeViewModel = HomeViewModel(navigator: homeNavigator, useCase: HomeUseCase())
         homeViewController.bindViewModel(to: homeViewModel)
-        homeNavigationController.tabBarItem = UITabBarItem(title: Constant.home, image: UIImage(named: Constant.iconHome), selectedImage: UIImage(named: Constant.iconHome))
+        homeNavigationController.tabBarItem = UITabBarItem(title: Constant.home,
+                                                           image: UIImage(named: Constant.iconHome)?.withRenderingMode(UIImageRenderingMode.alwaysOriginal),
+                                                           selectedImage: UIImage(named: Constant.iconHome))
         //Tab Library
         let libraryViewController = LibraryViewController.instantiate()
         let libraryNavigationController = UINavigationController(rootViewController: libraryViewController)

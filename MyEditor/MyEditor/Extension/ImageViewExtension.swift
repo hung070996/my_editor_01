@@ -8,6 +8,9 @@
 
 import Kingfisher
 import SnapKit
+import RxSwift
+import RxCocoa
+import Kingfisher
 
 extension UIImageView {
     func setImageForUrl(urlString: String, imageHolder: UIImage? = nil) {
@@ -70,5 +73,13 @@ extension UIImage {
         let newImage: UIImage? = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return newImage
+    }
+}
+
+extension Reactive where Base: UIImageView {
+    var urlString: Binder<String> {
+        return Binder(base) { imageView, url in
+            imageView.kf.setImage(with: URL(string: url), placeholder: imageView.image)
+        }
     }
 }
