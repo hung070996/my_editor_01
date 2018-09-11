@@ -12,9 +12,11 @@ import Then
 import RxCocoa
 
 class HomeViewController: UIViewController, BindableType {
-    @IBOutlet weak var exploreCollectionView: LoadMoreCollectionView!
-    @IBOutlet weak var photosTableView: RefreshTableView!
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var exploreCollectionView: LoadMoreCollectionView!
+    @IBOutlet private weak var photosTableView: RefreshTableView!
     @IBOutlet private weak var topView: UIView!
+    
     var viewModel: HomeViewModel!
     var arrPhotos = [Photo]()
     
@@ -24,7 +26,14 @@ class HomeViewController: UIViewController, BindableType {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         navigationController?.isNavigationBarHidden = true
+        self.dismissKeyboard()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.dismissKeyboard()
     }
     
     func configView() {
@@ -42,6 +51,9 @@ class HomeViewController: UIViewController, BindableType {
         exploreCollectionView.rx
             .setDelegate(self)
             .disposed(by: rx.disposeBag)
+        searchBar.do {
+            $0.backgroundColor = .clear
+        }
     }
     
     func bindViewModel() {
@@ -53,7 +65,8 @@ class HomeViewController: UIViewController, BindableType {
             reloadCollectionViewTrigger: exploreCollectionView.refreshTrigger,
             loadMoreCollectionViewTrigger: exploreCollectionView.loadMoreTrigger,
             selectTableViewTrigger: photosTableView.rx.itemSelected.asDriver(),
-            selectCollectionViewTrigger: exploreCollectionView.rx.itemSelected.asDriver()
+            selectCollectionViewTrigger: exploreCollectionView.rx.itemSelected.asDriver(),
+            toSearchViewTrigger: searchBar.rx.textDidBeginEditing.asDriver()
         )
         
         let output = viewModel.transform(input)
@@ -118,6 +131,9 @@ class HomeViewController: UIViewController, BindableType {
             .drive()
             .disposed(by: rx.disposeBag)
         output.selectedCollection
+            .drive()
+            .disposed(by: rx.disposeBag)
+        output.toSearchResult
             .drive()
             .disposed(by: rx.disposeBag)
     }

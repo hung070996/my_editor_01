@@ -28,7 +28,18 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9FU-85-AAw" userLabel="TopView">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="384.5"/>
+                                            <subviews>
+                                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ipO-js-I19">
+                                                    <rect key="frame" x="20" y="164" width="335" height="56"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </searchBar>
+                                            </subviews>
                                             <color key="backgroundColor" red="0.086421929300000006" green="0.39644888039999998" blue="0.70787125829999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="ipO-js-I19" firstAttribute="centerX" secondItem="9FU-85-AAw" secondAttribute="centerX" id="cGd-TN-Fol"/>
+                                                <constraint firstItem="ipO-js-I19" firstAttribute="centerY" secondItem="9FU-85-AAw" secondAttribute="centerY" id="g1R-Bw-I84"/>
+                                                <constraint firstItem="ipO-js-I19" firstAttribute="leading" secondItem="9FU-85-AAw" secondAttribute="leading" constant="20" id="ovN-7j-Rdr"/>
+                                            </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46y-Zx-BuK">
                                             <rect key="frame" x="20" y="389.5" width="61.5" height="20"/>
@@ -42,7 +53,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="o2Q-rP-Iyd" customClass="LoadMoreCollectionView" customModule="MyEditor" customModuleProvider="target">
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="o2Q-rP-Iyd" customClass="LoadMoreCollectionView" customModule="MyEditor" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="415" width="375" height="132"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="pJS-p3-Muh">
@@ -93,6 +104,7 @@
                     <connections>
                         <outlet property="exploreCollectionView" destination="o2Q-rP-Iyd" id="vpd-nA-w4W"/>
                         <outlet property="photosTableView" destination="DBj-oR-Znx" id="VW0-ON-kTR"/>
+                        <outlet property="searchBar" destination="ipO-js-I19" id="Yke-Xj-fG1"/>
                         <outlet property="topView" destination="9FU-85-AAw" id="eIa-MS-8Lz"/>
                     </connections>
                 </viewController>
