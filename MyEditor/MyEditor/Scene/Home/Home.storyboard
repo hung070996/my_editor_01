@@ -29,7 +29,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9FU-85-AAw" userLabel="TopView">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="384.5"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hFX-uN-nbl">
+                                                <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="hFX-uN-nbl">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="384.5"/>
                                                 </imageView>
                                             </subviews>
@@ -113,4 +113,7 @@
             <point key="canvasLocation" x="882.39999999999998" y="45.42728635682159"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="placeholder" width="750" height="750"/>
+    </resources>
 </document>

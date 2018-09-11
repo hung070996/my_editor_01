@@ -20,8 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="197"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="1sS-UI-Zyx">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="197"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="1sS-UI-Zyx">
+                    <rect key="frame" x="0.0" y="10" width="375" height="177"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kkm-Hv-5eg">
                         <size key="itemSize" width="50" height="50"/>
@@ -31,12 +31,12 @@
                     </collectionViewFlowLayout>
                 </collectionView>
             </subviews>
-            <color key="backgroundColor" red="0.69019607839999997" green="0.066666666669999999" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="1sS-UI-Zyx" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="PP2-jm-Vb8"/>
+                <constraint firstItem="1sS-UI-Zyx" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="PP2-jm-Vb8"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="1sS-UI-Zyx" secondAttribute="trailing" id="XTq-qa-oYQ"/>
                 <constraint firstItem="1sS-UI-Zyx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="XVs-Rv-XNk"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="1sS-UI-Zyx" secondAttribute="bottom" id="jRR-9k-dg2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="1sS-UI-Zyx" secondAttribute="bottom" constant="10" id="jRR-9k-dg2"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

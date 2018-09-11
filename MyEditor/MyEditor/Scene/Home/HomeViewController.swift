@@ -72,7 +72,7 @@ class HomeViewController: UIViewController, BindableType {
                     self.arrPhotos[indexPath.row] = photo
                 }
                 let cell = tableView.dequeueReusableCell(for: indexPath) as ImageTableCell
-                cell.fillData(url: photo.urls.regular, author: photo.id + "")
+                cell.fillData(url: photo.urls.regular, author: photo.userName + "")
                 return cell
             }
             .disposed(by: rx.disposeBag)

@@ -15,6 +15,7 @@ import Photos
 class EditImageViewController: UIViewController, BindableType {
     private struct Constant {
         static let widthCell = 100
+        static let saveSuccess = "Save image to album MyEditor successfully!"
     }
     
     var viewModel: EditImageViewModel!
@@ -33,6 +34,7 @@ class EditImageViewController: UIViewController, BindableType {
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var editView: EditView!
     @IBOutlet private var drawView: DrawView!
+    @IBOutlet private var viewGuideCrop: UIView!
     @IBOutlet private var viewCrop: UIView!
     @IBOutlet private var bottom: NSLayoutConstraint!
     @IBOutlet private var trailing: NSLayoutConstraint!
@@ -120,8 +122,12 @@ class EditImageViewController: UIViewController, BindableType {
             .drive(imageView.rx.image)
             .disposed(by: rx.disposeBag)
         output.clickedSave
-            .drive(onNext: { (result) in
-                print("success")
+            .drive(onNext: { result in
+                if result {
+                    self.makeToastWindow(title: Constant.saveSuccess)
+                    self.tabBarController?.tabBar.isHidden = false
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
             })
             .disposed(by: rx.disposeBag)
         output.clickedDone
@@ -144,6 +150,7 @@ class EditImageViewController: UIViewController, BindableType {
                 switch typeEdit {
                 case .crop:
                     self.state = .crop
+                    self.view.bringSubview(toFront: self.viewGuideCrop)
                     self.viewCrop.isHidden = false
                 case .draw:
                     self.state = .draw
@@ -157,6 +164,9 @@ class EditImageViewController: UIViewController, BindableType {
                 case .brightness:
                     self.state = .brightness
                     print("brightness")
+                case .contrast:
+                    self.state = .contrast
+                    print("contrast")
                 }
             })
             .disposed(by: rx.disposeBag)
@@ -180,45 +190,6 @@ class EditImageViewController: UIViewController, BindableType {
                     self.imageView.image = self.listDrawImage[self.indexImageDraw]
                 }
             })
-            .disposed(by: rx.disposeBag)
-        output.clickedTypeEdit.drive(onNext: { typeEdit in
-            self.navigationItem.rightBarButtonItem = self.doneItem
-            switch typeEdit {
-            case .crop:
-                self.state = .crop
-                self.viewCrop.isHidden = false
-            case .draw:
-                self.state = .draw
-                self.view.bringSubview(toFront: self.drawView)
-                self.listDrawImage = [UIImage]()
-                self.indexImageDraw = 0
-                guard let image = self.imageView.image else {
-                    return
-                }
-                self.listDrawImage.append(image)
-            case .brightness:
-                self.state = .brightness
-                print("brightness")
-            }
-        })
-            .disposed(by: rx.disposeBag)
-        output.valueSliderDraw.drive(onNext: { value in
-            self.strokeWidth = value
-        })
-            .disposed(by: rx.disposeBag)
-        output.clickedUndo.drive(onNext: { _ in
-            if self.indexImageDraw > 0 {
-                self.indexImageDraw -= 1
-                self.imageView.image = self.listDrawImage[self.indexImageDraw]
-            }
-        })
-            .disposed(by: rx.disposeBag)
-        output.clickedRedo.drive(onNext: { _ in
-            if self.indexImageDraw < self.listDrawImage.count - 1 {
-                self.indexImageDraw += 1
-                self.imageView.image = self.listDrawImage[self.indexImageDraw]
-            }
-        })
             .disposed(by: rx.disposeBag)
         guard let image = imageView.image else {
             return
@@ -277,16 +248,12 @@ class EditImageViewController: UIViewController, BindableType {
                 bottom.constant -= translation.y
             }
         case 9:
-            if leading.constant + translation.x >= 0 {
+            if leading.constant + translation.x >= 0 && trailing.constant - translation.x >= 0 {
                 leading.constant += translation.x
-            }
-            if top.constant + translation.y >= 0 {
-                top.constant += translation.y
-            }
-            if trailing.constant - translation.x >= 0 {
                 trailing.constant -= translation.x
             }
-            if bottom.constant - translation.y >= 0 {
+            if top.constant + translation.y >= 0 && bottom.constant - translation.y >= 0 {
+                top.constant += translation.y
                 bottom.constant -= translation.y
             }
         default:

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Toast_Swift
 
 extension UIViewController {
     func showAlertError(message: String, completion: (() -> Void)? = nil) {
@@ -39,6 +40,11 @@ extension UIViewController {
         }, completion: { isCompleted in
             toastLabel.removeFromSuperview()
         })
+    }
+    
+    func makeToastWindow(title: String) {
+        let window = UIApplication.shared.keyWindow
+        window?.rootViewController?.view.makeToast(title)
     }
 
     func dismissKeyboard() {

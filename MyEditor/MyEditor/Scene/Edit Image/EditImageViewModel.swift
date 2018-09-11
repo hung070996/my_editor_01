@@ -38,7 +38,7 @@ struct EditImageViewModel: ViewModelType {
     let useCase: EditImageUseCaseType
     
     func transform(_ input: EditImageViewModel.Input) -> EditImageViewModel.Output {
-        let editOptions = [EditType.crop, .draw, .brightness]
+        let editOptions = [EditType.crop, .draw, .brightness, .contrast]
         let image = input.loadTrigger
             .map {  _ in self.image }
         let clickedSave = input.clickSaveTrigger

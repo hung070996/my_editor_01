@@ -16,6 +16,7 @@ class Photo: Mappable {
     var height = 0
     var urls = URLPhoto()
     var like = 0
+    var userName = ""
     
     init() { }
     
@@ -30,5 +31,6 @@ class Photo: Mappable {
         height <- map["height"]
         urls <- map["urls"]
         like <- map["like"]
+        userName <- map["user.name"]
     }
 }

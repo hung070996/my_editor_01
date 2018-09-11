@@ -9,16 +9,18 @@
 import Foundation
 
 enum EditType {
-    case crop, draw, brightness
+    case crop, draw, brightness, contrast
     
     var item: (String, String) {
         switch self {
         case .crop:
-            return ("Crop", "Intro_Icon_View")
+            return ("Crop", "crop")
         case .draw:
-            return ("Draw", "Intro_Icon_View")
+            return ("Draw", "draw")
         case .brightness:
-            return ("Brightness", "Intro_Icon_View")
+            return ("Brightness", "brightness")
+        case .contrast:
+            return ("Contrast", "contrast")
         }
     }
 }
