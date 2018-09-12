@@ -20,6 +20,7 @@
 		0851BB992138D5630059C43F /* LibraryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0851BB982138D5630059C43F /* LibraryUseCase.swift */; };
 		0851BB9B2138D6120059C43F /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0851BB9A2138D6120059C43F /* LibraryViewModel.swift */; };
 		0851BB9D2138D6DD0059C43F /* LibraryNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0851BB9C2138D6DD0059C43F /* LibraryNavigator.swift */; };
+		08636D342146C693008B8461 /* RandomRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08636D332146C693008B8461 /* RandomRequest.swift */; };
 		086774F62146075D0062F965 /* EditImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086774F52146075D0062F965 /* EditImageUseCase.swift */; };
 		086774FC21463E550062F965 /* EditType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086774FB21463E550062F965 /* EditType.swift */; };
 		08677500214647BC0062F965 /* DrawView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086774FF214647BC0062F965 /* DrawView.xib */; };
@@ -131,6 +132,7 @@
 		0851BB982138D5630059C43F /* LibraryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryUseCase.swift; sourceTree = "<group>"; };
 		0851BB9A2138D6120059C43F /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
 		0851BB9C2138D6DD0059C43F /* LibraryNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryNavigator.swift; sourceTree = "<group>"; };
+		08636D332146C693008B8461 /* RandomRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomRequest.swift; sourceTree = "<group>"; };
 		086774F52146075D0062F965 /* EditImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditImageUseCase.swift; sourceTree = "<group>"; };
 		086774FB21463E550062F965 /* EditType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditType.swift; sourceTree = "<group>"; };
 		086774FF214647BC0062F965 /* DrawView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawView.xib; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 				08F6EE8021363C5200F895B6 /* SearchRequest.swift */,
 				08F6EE8D2136755000F895B6 /* PhotoInCollectionRequest.swift */,
 				1BC29E4721467C27004BEEFB /* RandomImageRequest.swift */,
+				08636D332146C693008B8461 /* RandomRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -821,6 +824,7 @@
 				08787AC9213528FF00569477 /* URLPhoto.swift in Sources */,
 				1B757C32213645620007B882 /* HomeViewController.swift in Sources */,
 				1BD4A3F62137CBCB0022643F /* ImageViewExtension.swift in Sources */,
+				08636D342146C693008B8461 /* RandomRequest.swift in Sources */,
 				08072A9D213780720020F80E /* Storyboards.swift in Sources */,
 				0867750221464B000062F965 /* DrawView.swift in Sources */,
 				08787AAD2134F13500569477 /* UIViewController+.swift in Sources */,

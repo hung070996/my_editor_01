@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tVx-Cs-8oT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tVx-Cs-8oT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -29,6 +29,9 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9FU-85-AAw" userLabel="TopView">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="384.5"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Rd-HT-D37">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="384.5"/>
+                                                </imageView>
                                                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ipO-js-I19">
                                                     <rect key="frame" x="20" y="164" width="335" height="56"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -36,8 +39,12 @@
                                             </subviews>
                                             <color key="backgroundColor" red="0.086421929300000006" green="0.39644888039999998" blue="0.70787125829999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
+                                                <constraint firstItem="9Rd-HT-D37" firstAttribute="leading" secondItem="9FU-85-AAw" secondAttribute="leading" id="5BL-Hn-rwO"/>
+                                                <constraint firstAttribute="bottom" secondItem="9Rd-HT-D37" secondAttribute="bottom" id="Hcb-qt-Ody"/>
                                                 <constraint firstItem="ipO-js-I19" firstAttribute="centerX" secondItem="9FU-85-AAw" secondAttribute="centerX" id="cGd-TN-Fol"/>
                                                 <constraint firstItem="ipO-js-I19" firstAttribute="centerY" secondItem="9FU-85-AAw" secondAttribute="centerY" id="g1R-Bw-I84"/>
+                                                <constraint firstAttribute="trailing" secondItem="9Rd-HT-D37" secondAttribute="trailing" id="lSA-kw-PmK"/>
+                                                <constraint firstItem="9Rd-HT-D37" firstAttribute="top" secondItem="9FU-85-AAw" secondAttribute="top" id="obF-p8-map"/>
                                                 <constraint firstItem="ipO-js-I19" firstAttribute="leading" secondItem="9FU-85-AAw" secondAttribute="leading" constant="20" id="ovN-7j-Rdr"/>
                                             </constraints>
                                         </view>
@@ -104,6 +111,7 @@
                     <connections>
                         <outlet property="exploreCollectionView" destination="o2Q-rP-Iyd" id="vpd-nA-w4W"/>
                         <outlet property="photosTableView" destination="DBj-oR-Znx" id="VW0-ON-kTR"/>
+                        <outlet property="randomImageView" destination="9Rd-HT-D37" id="XOi-aW-8Sq"/>
                         <outlet property="searchBar" destination="ipO-js-I19" id="Yke-Xj-fG1"/>
                         <outlet property="topView" destination="9FU-85-AAw" id="eIa-MS-8Lz"/>
                     </connections>

@@ -10,9 +10,11 @@ import UIKit
 import Reusable
 import Then
 import RxCocoa
+import RxSwift
 
 class HomeViewController: UIViewController, BindableType {
     @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var randomImageView: UIImageView!
     @IBOutlet private weak var exploreCollectionView: LoadMoreCollectionView!
     @IBOutlet private weak var photosTableView: RefreshTableView!
     @IBOutlet private weak var topView: UIView!
@@ -59,6 +61,7 @@ class HomeViewController: UIViewController, BindableType {
     func bindViewModel() {
         let input = HomeViewModel.Input(
             loadTrigger: Driver.just(()),
+            randomImageTrigger: Observable.just(()).repeatEvery(period: 10, scheduler: MainScheduler.instance).asDriverOnErrorJustComplete(),
             loadCollectionTrigger:  Driver.just(()),
             reloadTableViewTrigger: photosTableView.loadMoreTopTrigger,
             loadMoreTableViewTrigger: photosTableView.loadMoreBottomTrigger,
@@ -70,6 +73,12 @@ class HomeViewController: UIViewController, BindableType {
         )
         
         let output = viewModel.transform(input)
+        output.randomPhoto
+            .drive(randomImageView.rx.urlString)
+            .disposed(by: rx.disposeBag)
+        output.errorRandomPhoto
+            .drive(rx.error)
+            .disposed(by: rx.disposeBag)
         output.photos
             .drive(photosTableView.rx.items) { tableView, index, photo in
                 let indexPath = IndexPath(row: index, section: 0)
